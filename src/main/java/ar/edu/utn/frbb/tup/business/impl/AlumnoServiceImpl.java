@@ -51,7 +51,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public Alumno buscarAlumno(String apellido) {
+        public Alumno buscarAlumno(String apellido) {
         return alumnoDao.findAlumno(apellido);
     }
 }

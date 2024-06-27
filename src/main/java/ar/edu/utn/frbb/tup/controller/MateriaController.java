@@ -20,8 +20,8 @@ public class MateriaController {
 
     @GetMapping
     public List<Materia> getMaterias() {
-        Materia m = new Materia("labo 1", 2, 1, new Profesor("Lucho", "Salotto", "Lic"));
-        Materia m1 = new Materia("labo 2", 2, 1, new Profesor("Juan", "Perez", "Lic"));
+        Materia m = new Materia("labo 1", 2, 1, new Profesor(2, "Lucho", "Salotto", "Lic"));
+        Materia m1 = new Materia("labo 2", 2, 1, new Profesor(3, "Juan", "Perez", "Lic"));
 
         return Arrays.asList(m1, m);
     }

@@ -1,6 +1,7 @@
 package ar.edu.utn.frbb.tup.model.dto;
 
 public class AlumnoDto {
+
     String nombre;
     String apellido;
     long dni;
