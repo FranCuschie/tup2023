@@ -3,9 +3,12 @@ package ar.edu.utn.frbb.tup.business;
 import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 
-public interface ProfesorService {
-    Profesor buscarProfesor(long profesorId);
-    Profesor CrearProfesor(ProfesorDto profesorDto);
+import java.util.ArrayList;
 
-    Profesor EliminarProfesor(long profesorId);
+public interface ProfesorService {
+    Profesor buscarProfesor(String profesorApellido);
+    Profesor crearProfesor(ProfesorDto profe);
+
+    ArrayList materiasDictadasOrdenadas(Profesor profe, ArrayList materias);
+
 }

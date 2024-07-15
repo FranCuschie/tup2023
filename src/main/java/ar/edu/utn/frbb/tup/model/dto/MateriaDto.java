@@ -7,14 +7,14 @@ public class MateriaDto {
     private String nombre;
     private int anio;
     private int cuatrimestre;
-    private long profesorId;
+    private String profesorApellido;
 
-    public long getProfesorId() {
-        return profesorId;
+    public String getProfesorApellido() {
+        return profesorApellido;
     }
 
-    public void setProfesorId(long profesorId) {
-        this.profesorId = profesorId;
+    public void setProfesorApellido(String profesorApellido) {
+        this.profesorApellido = profesorApellido;
     }
 
     public String getNombre() {

@@ -36,7 +36,21 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
 
 
     @Override
-    public Profesor loadProfesor(Long idProfesor) {
+    public Profesor loadProfesor(Long dni) {
         return null;
     }
+
+    @Override
+    public Profesor deleteProfesor(String profesorApellido) {
+        for (Profesor a: repositorioProfesores.values()) {
+            if (a.getApellido().equals(profesorApellido)){
+                repositorioProfesores.remove(a);
+            }
+        }
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "No se pudo eliminar, no existen Profesores con ese apellido."
+        );
+    }
+
+
 }

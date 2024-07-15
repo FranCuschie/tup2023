@@ -10,7 +10,6 @@ public class Profesor {
     private String apellido;
     private String titulo;
     private long dni;
-
     private List<Materia> materiasDictadas;
 
     public Profesor() {

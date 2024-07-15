@@ -5,9 +5,10 @@ import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 import ar.edu.utn.frbb.tup.persistence.ProfesorDao;
 import ar.edu.utn.frbb.tup.persistence.ProfesorDaoMemoryImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 @Component
@@ -20,12 +21,12 @@ public class ProfesorServiceImpl implements ProfesorService {
     // private ProfesorDao dao;
 
     @Override
-    public Profesor buscarProfesor(long id) {
-        return null;
+    public Profesor buscarProfesor(String profesorApellido) {
+        return profesorDao.findProfesor(profesorApellido);
     }
 
     @Override
-    public Profesor CrearProfesor(ProfesorDto profesorDto) {
+    public Profesor crearProfesor(ProfesorDto profe) {
         Profesor profesor = new Profesor();
         Random random = new Random();
         profesor.setId(random.nextLong());
@@ -38,8 +39,10 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor EliminarProfesor(long profesorId) {
-        return null;
+    public ArrayList materiasDictadasOrdenadas(Profesor profesor, ArrayList materias) {
+        materias = (ArrayList) profesor.getMateriasDictadas();
+        Collections.sort(materias);
+        return materias;
     }
 
 }

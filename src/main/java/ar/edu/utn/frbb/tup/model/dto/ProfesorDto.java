@@ -6,34 +6,42 @@ import java.util.List;
 
 public class ProfesorDto {
 
-    private final long id = 12;
-    private final String nombre;
-    private final String apellido;
-    private final String titulo;
-
+    private String nombre;
+    private String apellido;
+    private String titulo;
+    private long dni;
     private List<Materia> materiasDictadas;
-
-    public ProfesorDto(String nombre, String apellido, String titulo, List<Materia> materiasDictadas) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.titulo = titulo;
-        this.materiasDictadas = materiasDictadas;
-    }
-
-    public long getId() {
-        return id;
-    }
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getApellido() {
         return apellido;
     }
 
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public String getTitulo() {
         return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Long getDni() {
+        return dni;
+    }
+
+    public void setDni(Long dni) {
+        this.dni = dni;
     }
 
     public List<Materia> getMateriasDictadas() {

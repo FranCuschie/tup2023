@@ -7,6 +7,8 @@ public interface ProfesorDao {
     Profesor saveProfesor(Profesor profesor);
     Profesor findProfesor(String profesorApellido);
 
-    Profesor loadProfesor(Long idProfesor);
+    Profesor loadProfesor(Long dni);
+
+    Profesor deleteProfesor(String profesorApellido);
 
 }

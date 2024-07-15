@@ -13,6 +13,7 @@ import java.util.List;
 
 @Service
 public class MateriaServiceImpl implements MateriaService {
+
     @Autowired
     private MateriaDao dao;
 
@@ -25,7 +26,7 @@ public class MateriaServiceImpl implements MateriaService {
         m.setNombre(materia.getNombre());
         m.setAnio(materia.getAnio());
         m.setCuatrimestre(materia.getCuatrimestre());
-        m.setProfesor(profesorService.buscarProfesor(materia.getProfesorId()));
+        m.setProfesor(profesorService.buscarProfesor(materia.getProfesorApellido()));
         dao.save(m);
         if (m.getNombre().contains("a")) {
             throw new IllegalArgumentException();
