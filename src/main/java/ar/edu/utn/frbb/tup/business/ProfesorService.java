@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface ProfesorService {
     Profesor buscarProfesor(String profesorApellido);
-    Profesor crearProfesor(ProfesorDto profe);
+    Profesor crearProfesor(ProfesorDto profesorDto);
 
     ArrayList materiasDictadasOrdenadas(Profesor profe, ArrayList materias);
 

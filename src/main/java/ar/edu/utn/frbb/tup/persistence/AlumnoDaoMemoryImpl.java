@@ -38,4 +38,16 @@ public class AlumnoDaoMemoryImpl implements AlumnoDao {
         return null;
     }
 
+    @Override
+    public Alumno deleteAlumno(String apellidoAlumno) {
+        for (Alumno a: repositorioAlumnos.values()) {
+            if (a.getApellido().equals(apellidoAlumno)){
+                return repositorioAlumnos.remove(apellidoAlumno);
+            }
+        }
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "No existen alumnos con esos datos."
+        );
+    }
+
 }
