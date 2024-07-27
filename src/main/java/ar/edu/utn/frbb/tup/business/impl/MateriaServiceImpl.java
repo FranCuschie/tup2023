@@ -27,6 +27,7 @@ public class MateriaServiceImpl implements MateriaService {
         m.setAnio(materia.getAnio());
         m.setCuatrimestre(materia.getCuatrimestre());
         m.setProfesor(profesorService.buscarProfesor(materia.getProfesorApellido()));
+        m.setCorrelatividades(materia.getCorrelatividadess());
         dao.save(m);
         if (m.getNombre().contains("a")) {
             throw new IllegalArgumentException();
@@ -43,6 +44,5 @@ public class MateriaServiceImpl implements MateriaService {
     public List<Materia> getAllMaterias() {
         return null;
     }
-
 
 }

@@ -1,6 +1,9 @@
 package ar.edu.utn.frbb.tup.model.dto;
 
-import ar.edu.utn.frbb.tup.model.Profesor;
+
+import ar.edu.utn.frbb.tup.model.Materia;
+
+import java.util.List;
 
 public class MateriaDto {
 
@@ -8,6 +11,7 @@ public class MateriaDto {
     private int anio;
     private int cuatrimestre;
     private String profesorApellido;
+    private List<Materia> correlatividadess;
 
     public String getProfesorApellido() {
         return profesorApellido;
@@ -39,5 +43,13 @@ public class MateriaDto {
 
     public void setCuatrimestre(int cuatrimestre) {
         this.cuatrimestre = cuatrimestre;
+    }
+
+    public List<Materia> getCorrelatividadess() {
+        return correlatividadess;
+    }
+
+    public void setCorrelatividadess(List<Materia> correlatividadess) {
+        this.correlatividadess = correlatividadess;
     }
 }

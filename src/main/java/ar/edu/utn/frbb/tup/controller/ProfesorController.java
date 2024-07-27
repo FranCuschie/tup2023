@@ -6,6 +6,8 @@ import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 
 @RestController
 @RequestMapping("profesor")
@@ -16,16 +18,22 @@ public class ProfesorController {
 
     @PostMapping("/")
     public Profesor crearProfesor(@RequestBody ProfesorDto profesorDto) {
-
         return profesorService.crearProfesor(profesorDto);
-
     }
 
-    @GetMapping
-    public Profesor buscarProfesor(@RequestParam String profesorApellido) {
+    @PutMapping("/profesor{idProfesor}")
+    public Profesor modificarProfesor(@PathVariable("idProfesor") Long id, @RequestBody Profesor profesor) {
+        return profesorService.modificarProfesor(id, profesor);
+    }
 
-        return profesorService.buscarProfesor(profesorApellido);
+    @DeleteMapping("/carrera/{idProfesor}")
+    public Profesor eliminarProfesor(@RequestParam Long id) {
+        return profesorService.eliminarProfesor(id);
+    }
 
+    @GetMapping("/{profesor}/materias")
+    public ArrayList MateriasDictadasOredenadas(@PathVariable Profesor profesor, ArrayList materias) {
+        return MateriasDictadasOredenadas(profesor, materias);
     }
 
 }

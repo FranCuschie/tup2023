@@ -59,7 +59,6 @@ public class Materia {
 
     public void agregarCorrelatividad(Materia m){
         this.correlatividades.add(m);
-
     }
 
     public List<Materia> getCorrelatividades(){

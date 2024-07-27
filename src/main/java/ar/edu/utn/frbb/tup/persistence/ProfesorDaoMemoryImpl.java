@@ -16,40 +16,26 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
 
     @Override
     public Profesor saveProfesor(Profesor profesor) {
-        Random random = new Random();
-        profesor.setId(random.nextLong());
-        return repositorioProfesores.put(profesor.getDni(), profesor);
+        return repositorioProfesores.put(profesor.getId(), profesor);
     }
 
     @Override
-    public Profesor findProfesor(String profesorApellido) {
-        for (Profesor profesor: repositorioProfesores.values())
-        {
-            if (profesor.getApellido().equals(profesorApellido)){
-                return profesor;
-            }
+    public Profesor findProfesor(Long idProfesor, Profesor profesor) {
+        Profesor profesorExistente = repositorioProfesores.get(idProfesor);
+        if (profesorExistente != null) {
+            return profesor;
         }
-        throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "No existe profesor con ese apellido."
-        );
-    }
-
-
-    @Override
-    public Profesor loadProfesor(Long dni) {
-        return null;
-    }
-
-    @Override
-    public Profesor deleteProfesor(String profesorApellido) {
-        for (Profesor a: repositorioProfesores.values()) {
-            if (a.getApellido().equals(profesorApellido)){
-                repositorioProfesores.remove(a);
-            }
+        else {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "No existe profesor con ese id."
+            );
         }
-        throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "No se pudo eliminar, no existen Profesores con ese apellido."
-        );
+    }
+
+
+    @Override
+    public Profesor deleteProfesor(Long idProfesor) {
+            return repositorioProfesores.remove(idProfesor);
     }
 
 

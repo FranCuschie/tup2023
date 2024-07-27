@@ -6,8 +6,11 @@ import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 import java.util.ArrayList;
 
 public interface ProfesorService {
-    Profesor buscarProfesor(String profesorApellido);
     Profesor crearProfesor(ProfesorDto profesorDto);
+
+    Profesor modificarProfesor(Long idProfesor, Profesor profesor);
+
+    Profesor eliminarProfesor(Long idProfesor);
 
     ArrayList materiasDictadasOrdenadas(Profesor profe, ArrayList materias);
 
