@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 @Component
@@ -34,8 +35,9 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor modificarProfesor(Long idProfesor, Profesor profesor) {
-        Profesor profe = profesorDao.findProfesor(idProfesor, profesor);
+    public Profesor modificarProfesor(Long idProfesor) {
+        Profesor profe = new Profesor();
+        Profesor profesor = profesorDao.findProfesor(idProfesor);
         profe.setNombre(profesor.getNombre());
         profe.setApellido(profesor.getApellido());
         profe.setTitulo(profesor.getTitulo());
@@ -50,10 +52,17 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public ArrayList materiasDictadasOrdenadas(Profesor profesor, ArrayList materias) {
-        materias = (ArrayList) profesor.getMateriasDictadas();
-        Collections.sort(materias);
-        return materias;
+    public Profesor buscarProfesorById(Long idProfesor) {
+        return profesorDao.findProfesor(idProfesor);
     }
+
+    @Override
+    public Profesor materiasDictadas(Long idProfesor) {
+        List listaOrdenada;
+        listaOrdenada = profesorDao.findProfesor(idProfesor).getMateriasDictadas();
+        Collections.sort(listaOrdenada);
+        return (Profesor) listaOrdenada;
+    }
+
 
 }

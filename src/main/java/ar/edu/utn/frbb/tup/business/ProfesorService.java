@@ -8,10 +8,12 @@ import java.util.ArrayList;
 public interface ProfesorService {
     Profesor crearProfesor(ProfesorDto profesorDto);
 
-    Profesor modificarProfesor(Long idProfesor, Profesor profesor);
+    Profesor modificarProfesor(Long idProfesor);
 
     Profesor eliminarProfesor(Long idProfesor);
 
-    ArrayList materiasDictadasOrdenadas(Profesor profe, ArrayList materias);
+    Profesor buscarProfesorById(Long idProfesor);
+
+    Profesor materiasDictadas(Long idProfesor);
 
 }

@@ -20,10 +20,10 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
     }
 
     @Override
-    public Profesor findProfesor(Long idProfesor, Profesor profesor) {
+    public Profesor findProfesor(Long idProfesor) {
         Profesor profesorExistente = repositorioProfesores.get(idProfesor);
         if (profesorExistente != null) {
-            return profesor;
+            return profesorExistente;
         }
         else {
             throw new ResponseStatusException(

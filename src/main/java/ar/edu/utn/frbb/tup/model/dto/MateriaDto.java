@@ -10,15 +10,15 @@ public class MateriaDto {
     private String nombre;
     private int anio;
     private int cuatrimestre;
-    private String profesorApellido;
+    private Long profesorId;
     private List<Materia> correlatividadess;
 
-    public String getProfesorApellido() {
-        return profesorApellido;
+    public Long getProfesorId() {
+        return profesorId;
     }
 
-    public void setProfesorApellido(String profesorApellido) {
-        this.profesorApellido = profesorApellido;
+    public void setProfesorId(Long profesorId) {
+        this.profesorId = profesorId;
     }
 
     public String getNombre() {

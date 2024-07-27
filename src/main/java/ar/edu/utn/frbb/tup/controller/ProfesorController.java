@@ -21,9 +21,9 @@ public class ProfesorController {
         return profesorService.crearProfesor(profesorDto);
     }
 
-    @PutMapping("/profesor{idProfesor}")
-    public Profesor modificarProfesor(@PathVariable("idProfesor") Long id, @RequestBody Profesor profesor) {
-        return profesorService.modificarProfesor(id, profesor);
+    @PutMapping("/profesor/{idProfesor}")
+    public Profesor modificarProfesor(@PathVariable("idProfesor") Long id) {
+        return profesorService.modificarProfesor(id);
     }
 
     @DeleteMapping("/carrera/{idProfesor}")
@@ -31,9 +31,9 @@ public class ProfesorController {
         return profesorService.eliminarProfesor(id);
     }
 
-    @GetMapping("/{profesor}/materias")
-    public ArrayList MateriasDictadasOredenadas(@PathVariable Profesor profesor, ArrayList materias) {
-        return MateriasDictadasOredenadas(profesor, materias);
+    @GetMapping("/profesor/{idProfesor}/materias")
+    public Profesor MateriasDictadas(@PathVariable Long idProfesor) {
+        return MateriasDictadas(idProfesor);
     }
 
 }
