@@ -1,13 +1,12 @@
 package ar.edu.utn.frbb.tup.persistence;
 
+import ar.edu.utn.frbb.tup.model.Alumno;
 import ar.edu.utn.frbb.tup.model.Profesor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 @Service
 public class ProfesorDaoMemoryImpl implements ProfesorDao {
@@ -35,7 +34,14 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
 
     @Override
     public Profesor deleteProfesor(Long idProfesor) {
-            return repositorioProfesores.remove(idProfesor);
+        for (Profesor p: repositorioProfesores.values()) {
+            if (p.getApellido().equals(idProfesor)){
+                return repositorioProfesores.remove(idProfesor);
+            }
+        }
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "No existe profesor con esos datos."
+        );
     }
 
 

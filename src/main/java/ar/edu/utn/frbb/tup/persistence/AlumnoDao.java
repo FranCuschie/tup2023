@@ -5,10 +5,10 @@ import ar.edu.utn.frbb.tup.model.Alumno;
 public interface AlumnoDao {
     Alumno saveAlumno(Alumno a);
 
-    Alumno findAlumno(String apellidoAlumno);
+    Alumno findAlumno(Long idAlumno);
 
     Alumno loadAlumno(Long dni);
 
-    Alumno deleteAlumno(String apellidoAlumno);
+    Alumno deleteAlumno(Long id);
 
 }

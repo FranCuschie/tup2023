@@ -18,19 +18,20 @@ public class AlumnoDaoMemoryImpl implements AlumnoDao {
     public Alumno saveAlumno(Alumno alumno) {
         Random random = new Random();
         alumno.setId(random.nextLong());
-        return repositorioAlumnos.put(alumno.getDni(), alumno);
+        return repositorioAlumnos.put(alumno.getId(), alumno);
     }
 
     @Override
-    public Alumno findAlumno(String apellidoAlumno) {
-        for (Alumno a: repositorioAlumnos.values()) {
-            if (a.getApellido().equals(apellidoAlumno)){
-                return a;
-            }
+    public Alumno findAlumno(Long idAlumno) {
+        Alumno alumnoExistente = repositorioAlumnos.get(idAlumno);
+        if (alumnoExistente != null) {
+            return alumnoExistente;
         }
-        throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "No existen alumnos con esos datos."
-        );
+        else {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "No existe alumno con ese id."
+            );
+        }
     }
 
     @Override
@@ -39,10 +40,10 @@ public class AlumnoDaoMemoryImpl implements AlumnoDao {
     }
 
     @Override
-    public Alumno deleteAlumno(String apellidoAlumno) {
+    public Alumno deleteAlumno(Long idAlumno) {
         for (Alumno a: repositorioAlumnos.values()) {
-            if (a.getApellido().equals(apellidoAlumno)){
-                return repositorioAlumnos.remove(apellidoAlumno);
+            if (a.getApellido().equals(idAlumno)){
+                return repositorioAlumnos.remove(idAlumno);
             }
         }
         throw new ResponseStatusException(

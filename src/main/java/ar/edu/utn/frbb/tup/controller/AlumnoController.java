@@ -1,5 +1,4 @@
 package ar.edu.utn.frbb.tup.controller;
-
 import ar.edu.utn.frbb.tup.business.AlumnoService;
 import ar.edu.utn.frbb.tup.model.Alumno;
 import ar.edu.utn.frbb.tup.model.dto.AlumnoDto;
@@ -15,23 +14,17 @@ public class AlumnoController {
 
     @PostMapping("/")
     public Alumno crearAlumno(@RequestBody AlumnoDto alumnoDto) {
-
         return alumnoService.crearAlumno(alumnoDto);
-
     }
 
-    @GetMapping
-    public Alumno buscarAlumno(@RequestParam String apellido) {
-
-        return alumnoService.buscarAlumno(apellido);
-
+    @PutMapping("/alumno/{idAlumno}")
+    public Alumno modificarAlumno(@PathVariable("idAlumno") Long idAlumno) {
+        return alumnoService.buscarAlumno(idAlumno);
     }
 
-    @GetMapping
-    public Alumno eliminarAlumno(@RequestParam String apellido) {
-
-        return alumnoService.eliminarAlumno(apellido);
-
+    @DeleteMapping("/carrera/{idAlumno}")
+    public Alumno eliminarAlumno(@RequestParam Long idAlumno) {
+        return alumnoService.eliminarAlumno(idAlumno);
     }
 
 }
