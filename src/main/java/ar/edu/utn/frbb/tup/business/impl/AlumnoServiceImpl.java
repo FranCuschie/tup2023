@@ -11,6 +11,7 @@ import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.AlumnoDao;
 import ar.edu.utn.frbb.tup.persistence.AlumnoDaoMemoryImpl;
+import ar.edu.utn.frbb.tup.persistence.exception.AlumnoNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -51,12 +52,12 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-        public Alumno buscarAlumno(Long id) {
+        public Alumno buscarAlumno(Long id) throws AlumnoNotFoundException {
         return alumnoDao.findAlumno(id);
     }
 
     @Override
-    public Alumno eliminarAlumno(Long idAlumno) {
+    public Alumno eliminarAlumno(Long idAlumno) throws AlumnoNotFoundException {
         return alumnoDao.deleteAlumno(idAlumno);
     }
 }

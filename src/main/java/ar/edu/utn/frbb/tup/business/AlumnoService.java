@@ -4,6 +4,7 @@ import ar.edu.utn.frbb.tup.model.Alumno;
 import ar.edu.utn.frbb.tup.model.dto.AlumnoDto;
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
+import ar.edu.utn.frbb.tup.persistence.exception.AlumnoNotFoundException;
 
 public interface AlumnoService {
 
@@ -11,7 +12,7 @@ public interface AlumnoService {
 
     Alumno crearAlumno(AlumnoDto alumnoDto);
 
-    Alumno buscarAlumno(Long idAlumno);
+    Alumno buscarAlumno(Long idAlumno) throws AlumnoNotFoundException;
 
-    Alumno eliminarAlumno(Long idAlumno);
+    Alumno eliminarAlumno(Long idAlumno) throws  AlumnoNotFoundException;
 }

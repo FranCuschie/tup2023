@@ -5,10 +5,9 @@ import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 import ar.edu.utn.frbb.tup.persistence.ProfesorDao;
 import ar.edu.utn.frbb.tup.persistence.ProfesorDaoMemoryImpl;
+import ar.edu.utn.frbb.tup.persistence.exception.ProfesorNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -35,7 +34,7 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor modificarProfesor(Long idProfesor) {
+    public Profesor modificarProfesor(Long idProfesor) throws ProfesorNotFoundException {
         Profesor profe = new Profesor();
         Profesor profesor = profesorDao.findProfesor(idProfesor);
         profe.setNombre(profesor.getNombre());
@@ -47,17 +46,17 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor eliminarProfesor(Long idProfesor) {
+    public Profesor eliminarProfesor(Long idProfesor) throws ProfesorNotFoundException {
         return profesorDao.deleteProfesor(idProfesor);
     }
 
     @Override
-    public Profesor buscarProfesorById(Long idProfesor) {
+    public Profesor buscarProfesorById(Long idProfesor) throws ProfesorNotFoundException {
         return profesorDao.findProfesor(idProfesor);
     }
 
     @Override
-    public Profesor materiasDictadas(Long idProfesor) {
+    public Profesor materiasDictadas(Long idProfesor) throws  ProfesorNotFoundException {
         List listaOrdenada;
         listaOrdenada = profesorDao.findProfesor(idProfesor).getMateriasDictadas();
         Collections.sort(listaOrdenada);
