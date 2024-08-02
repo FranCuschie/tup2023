@@ -5,12 +5,14 @@ import ar.edu.utn.frbb.tup.business.AsignaturaService;
 import ar.edu.utn.frbb.tup.model.Alumno;
 import ar.edu.utn.frbb.tup.model.Asignatura;
 import ar.edu.utn.frbb.tup.model.EstadoAsignatura;
-import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.model.dto.AlumnoDto;
-import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
+import ar.edu.utn.frbb.tup.model.dto.AsignaturaDto;
+import ar.edu.utn.frbb.tup.model.exception.AsignaturaInexistenteException;
+import ar.edu.utn.frbb.tup.model.exception.CorrelatividadException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.AlumnoDao;
-import ar.edu.utn.frbb.tup.persistence.AlumnoDaoMemoryImpl;
+import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
+import ar.edu.utn.frbb.tup.persistence.impl.AlumnoDaoMemoryImpl;
 import ar.edu.utn.frbb.tup.persistence.exception.AlumnoNotFoundException;
 import org.springframework.stereotype.Component;
 
@@ -22,21 +24,24 @@ public class AlumnoServiceImpl implements AlumnoService {
     private static final AlumnoDao alumnoDao = new AlumnoDaoMemoryImpl();
     private static final AsignaturaService asignaturaService = new AsignaturaServiceImpl();
 
+
     @Override
-    public void aprobarAsignatura(int materiaId, int nota, long dni) throws EstadoIncorrectoException, CorrelatividadesNoAprobadasException {
-        Asignatura a = asignaturaService.getAsignatura(materiaId, dni);
-        for (Materia m:
-                a.getMateria().getCorrelatividades()) {
-            Asignatura correlativa = asignaturaService.getAsignatura(m.getMateriaId(), dni);
-            if (!EstadoAsignatura.APROBADA.equals(correlativa.getEstado())) {
-                throw new CorrelatividadesNoAprobadasException("La materia " + m.getNombre() + " debe estar aprobada para aprobar " + a.getNombreAsignatura());
-            }
+    public Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, AsignaturaNotFoundException, AsignaturaInexistenteException, CorrelatividadException {
+        Alumno alumno = alumnoDao.findAlumno(idAlumno);
+        Asignatura asignatura = asignaturaService.getAsignatura(idAsignatura);
+        if (asignaturaDto.getCondicion().equals(EstadoAsignatura.APROBADA)){
+            alumno.aprobarAsignatura(asignatura, asignaturaDto.getNota());
         }
-        a.aprobarAsignatura(nota);
-        asignaturaService.actualizarAsignatura(a);
-        Alumno alumno = alumnoDao.loadAlumno(dni);
-        alumno.actualizarAsignatura(a);
+        else if (asignaturaDto.getCondicion().equals(EstadoAsignatura.CURSADA)){
+            alumno.cursarAsignatura(asignatura);
+        }
+        else {
+            throw new CorrelatividadException("La condición de la materia solo puede ser cambiada a 'Cursada' o 'Aprobada'.");
+        }
+        asignaturaService.actualizarAsignatura(asignatura);
+        alumno.actualizarAsignatura(asignatura);
         alumnoDao.saveAlumno(alumno);
+        return asignatura;
     }
 
     @Override

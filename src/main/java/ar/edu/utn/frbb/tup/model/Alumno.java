@@ -15,6 +15,7 @@ public class Alumno {
     private long dni;
 
     private List<Asignatura> asignaturas;
+    private Asignatura materia;
 
     public Alumno() {
     }
@@ -59,14 +60,20 @@ public class Alumno {
         return this.asignaturas;
     }
 
-    public void aprobarAsignatura(Materia materia, int nota) throws EstadoIncorrectoException, CorrelatividadException, AsignaturaInexistenteException {
-        Asignatura asignaturaAAprobar = getAsignaturaAAprobar(materia);
-
+    public void aprobarAsignatura(Asignatura asignatura, int nota) throws EstadoIncorrectoException, CorrelatividadException, AsignaturaInexistenteException {
         for (Materia correlativa :
-                materia.getCorrelatividades()) {
+                asignatura.getCorrelatividades()) {
             chequearCorrelatividad(correlativa);
         }
-        asignaturaAAprobar.aprobarAsignatura(nota);
+        asignatura.aprobarAsignatura(nota);
+    }
+
+    public void cursarAsignatura (Asignatura asignatura) throws CorrelatividadException, EstadoIncorrectoException {
+        for (Materia correlativa :
+                asignatura.getCorrelatividades()) {
+            chequearCorrelatividad(correlativa);
+        }
+        asignatura.cursarAsignatura();
     }
 
     private void chequearCorrelatividad(Materia correlativa) throws CorrelatividadException {
@@ -111,5 +118,9 @@ public class Alumno {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<Materia> getCorrelatividades(){
+        return this.materia.getCorrelatividades();
     }
 }

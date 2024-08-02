@@ -1,6 +1,7 @@
-package ar.edu.utn.frbb.tup.persistence;
+package ar.edu.utn.frbb.tup.persistence.impl;
 
 import ar.edu.utn.frbb.tup.model.Materia;
+import ar.edu.utn.frbb.tup.persistence.MateriaDao;
 import ar.edu.utn.frbb.tup.persistence.exception.MateriaNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +31,6 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
         }
         throw new MateriaNotFoundException("No se encontró la materia con id " + idMateria);
     }
+
+
 }

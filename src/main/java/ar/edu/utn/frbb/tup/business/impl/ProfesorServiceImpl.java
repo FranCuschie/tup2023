@@ -3,8 +3,9 @@ package ar.edu.utn.frbb.tup.business.impl;
 import ar.edu.utn.frbb.tup.business.ProfesorService;
 import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
+import ar.edu.utn.frbb.tup.persistence.MateriaDao;
 import ar.edu.utn.frbb.tup.persistence.ProfesorDao;
-import ar.edu.utn.frbb.tup.persistence.ProfesorDaoMemoryImpl;
+import ar.edu.utn.frbb.tup.persistence.impl.ProfesorDaoMemoryImpl;
 import ar.edu.utn.frbb.tup.persistence.exception.ProfesorNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,9 @@ public class ProfesorServiceImpl implements ProfesorService {
 
     @Autowired
     private ProfesorDao dao;
+
+    @Autowired
+    private MateriaDao materiaDao;
 
     @Override
     public Profesor crearProfesor(ProfesorDto profe) {

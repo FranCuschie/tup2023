@@ -1,12 +1,13 @@
-package ar.edu.utn.frbb.tup.persistence;
+package ar.edu.utn.frbb.tup.persistence.impl;
 
-import ar.edu.utn.frbb.tup.model.Alumno;
 import ar.edu.utn.frbb.tup.model.Profesor;
+import ar.edu.utn.frbb.tup.persistence.ProfesorDao;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @Service
 public class ProfesorDaoMemoryImpl implements ProfesorDao {
@@ -15,6 +16,8 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
 
     @Override
     public Profesor saveProfesor(Profesor profesor) {
+        Random random = new Random();
+        profesor.setId(random.nextLong());
         return repositorioProfesores.put(profesor.getId(), profesor);
     }
 
