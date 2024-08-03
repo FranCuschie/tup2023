@@ -28,8 +28,7 @@ public class MateriaServiceImpl implements MateriaService {
         m.setAnio(materia.getAnio());
         m.setCuatrimestre(materia.getCuatrimestre());
         m.setProfesor(profesorService.buscarProfesorById(materia.getProfesorId()));
-        m.setCorrelatividades(materia.getCorrelatividadess());
-        dao.save(m);
+        dao.save(m, m.getCorrelatividades());
         if (m.getNombre().contains("a")) {
             throw new IllegalArgumentException();
         }

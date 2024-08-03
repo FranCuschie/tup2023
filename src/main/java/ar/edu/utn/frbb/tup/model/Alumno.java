@@ -60,6 +60,22 @@ public class Alumno {
         return this.asignaturas;
     }
 
+    public List<Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
+
+    public void setAsignaturas(List<Asignatura> asignaturas) {
+        this.asignaturas = asignaturas;
+    }
+
+    public Asignatura getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Asignatura materia) {
+        this.materia = materia;
+    }
+
     public void aprobarAsignatura(Asignatura asignatura, int nota) throws EstadoIncorrectoException, CorrelatividadException, AsignaturaInexistenteException {
         for (Materia correlativa :
                 asignatura.getCorrelatividades()) {

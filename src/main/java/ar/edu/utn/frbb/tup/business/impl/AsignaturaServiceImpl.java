@@ -21,4 +21,9 @@ public class AsignaturaServiceImpl implements AsignaturaService {
         return asignaturaDao.getAsignaturaById(id) ;
     }
 
+    @Override
+    public void actualizarAsignatura(Asignatura a) throws AsignaturaNotFoundException {
+
+    }
+
 }

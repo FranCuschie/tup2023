@@ -1,17 +1,13 @@
 package ar.edu.utn.frbb.tup.model.dto;
 
 
-import ar.edu.utn.frbb.tup.model.Materia;
-
-import java.util.List;
-
 public class MateriaDto {
 
     private String nombre;
     private int anio;
     private int cuatrimestre;
     private Long profesorId;
-    private List<Materia> correlatividadess;
+    private int [] correlatividades;
 
     public Long getProfesorId() {
         return profesorId;
@@ -45,11 +41,13 @@ public class MateriaDto {
         this.cuatrimestre = cuatrimestre;
     }
 
-    public List<Materia> getCorrelatividadess() {
-        return correlatividadess;
+    public int[] getCorrelatividades() {
+        return correlatividades;
     }
 
-    public void setCorrelatividadess(List<Materia> correlatividadess) {
-        this.correlatividadess = correlatividadess;
+    public void setCorrelatividades(int[] correlatividades) {
+        this.correlatividades = correlatividades;
     }
+
+
 }

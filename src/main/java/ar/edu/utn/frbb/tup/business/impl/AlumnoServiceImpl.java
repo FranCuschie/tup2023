@@ -29,16 +29,16 @@ public class AlumnoServiceImpl implements AlumnoService {
     public Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, AsignaturaNotFoundException, AsignaturaInexistenteException, CorrelatividadException {
         Alumno alumno = alumnoDao.findAlumno(idAlumno);
         Asignatura asignatura = asignaturaService.getAsignatura(idAsignatura);
-        if (asignaturaDto.getCondicion().equals(EstadoAsignatura.APROBADA)){
+        if (asignaturaDto.getEstado().equals(EstadoAsignatura.APROBADA)){
             alumno.aprobarAsignatura(asignatura, asignaturaDto.getNota());
         }
-        else if (asignaturaDto.getCondicion().equals(EstadoAsignatura.CURSADA)){
+        else if (asignaturaDto.getEstado().equals(EstadoAsignatura.CURSADA)){
             alumno.cursarAsignatura(asignatura);
         }
         else {
             throw new CorrelatividadException("La condición de la materia solo puede ser cambiada a 'Cursada' o 'Aprobada'.");
         }
-        asignaturaService.actualizarAsignatura(asignatura);
+        asignaturaService.getAsignatura(asignatura.getId());
         alumno.actualizarAsignatura(asignatura);
         alumnoDao.saveAlumno(alumno);
         return asignatura;

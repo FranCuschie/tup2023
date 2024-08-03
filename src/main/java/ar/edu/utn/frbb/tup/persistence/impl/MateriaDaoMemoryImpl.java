@@ -6,6 +6,7 @@ import ar.edu.utn.frbb.tup.persistence.exception.MateriaNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -14,7 +15,7 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
 
     private static final Map<Integer, Materia> repositorioMateria = new HashMap<>();
     @Override
-    public Materia save(Materia materia) {
+    public Materia save(Materia materia, List<Materia> correlatividades) {
         Random random = new Random();
         materia.setMateriaId(random.nextInt());
         repositorioMateria.put(materia.getMateriaId(), materia);

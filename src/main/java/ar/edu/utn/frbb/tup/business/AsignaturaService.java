@@ -7,4 +7,6 @@ public interface AsignaturaService {
 
     Asignatura getAsignatura(Long id) throws AsignaturaNotFoundException;
 
+    void actualizarAsignatura(Asignatura a) throws AsignaturaNotFoundException;
+
 }

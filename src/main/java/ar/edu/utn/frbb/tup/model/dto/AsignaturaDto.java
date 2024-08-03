@@ -11,14 +11,15 @@ public class AsignaturaDto {
         this.nota = nota;
     }
 
-
     public int getNota() {
         return nota;
     }
 
-    public EstadoAsignatura getCondicion() {
+    public EstadoAsignatura getEstado() {
         return this.estado;
     }
 
-
+    public void setEstado(EstadoAsignatura estado) {
+        this.estado = estado;
+    }
 }

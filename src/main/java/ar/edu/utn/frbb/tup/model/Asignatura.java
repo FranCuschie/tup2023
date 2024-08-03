@@ -4,7 +4,6 @@ import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 public class Asignatura {
     private Materia materia;
@@ -12,8 +11,11 @@ public class Asignatura {
     private EstadoAsignatura estado;
     private Integer nota;
 
-    public Asignatura(Materia materia, Random id) {
+
+    public Asignatura() {
+
     }
+
     public Asignatura(Materia materia) {
         this.materia = materia;
         this.id = id;

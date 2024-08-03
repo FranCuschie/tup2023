@@ -68,7 +68,8 @@ public class Profesor {
         return materiasDictadas;
     }
 
-    public void setMateriasDictadas(List<Materia> materiasDictadas) {
-        this.materiasDictadas = materiasDictadas;
+
+    public void setMateriasDictadas(Materia materia) {
+        this.materiasDictadas.add(materia);
     }
 }

@@ -15,4 +15,24 @@ public class Carrera {
 
     public void agregarMateria(Materia materia) {
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCantidadAnios() {
+        return cantidadAnios;
+    }
+
+    public void setCantidadAnios(int cantidadAnios) {
+        this.cantidadAnios = cantidadAnios;
+    }
+
+    public List<Materia> getMateriasList() {
+        return materiasList;
+    }
+
+    public void setMateriasList(List<Materia> materiasList) {
+        this.materiasList = materiasList;
+    }
 }

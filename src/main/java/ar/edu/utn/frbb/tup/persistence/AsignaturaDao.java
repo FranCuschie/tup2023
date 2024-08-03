@@ -11,5 +11,7 @@ public interface AsignaturaDao {
 
     Asignatura getAsignaturaById(long id) throws AsignaturaNotFoundException;
 
+    void actualizarAsignatura(Asignatura a) throws AsignaturaNotFoundException;
+
     List<Asignatura> getListAsignaturas();
 }

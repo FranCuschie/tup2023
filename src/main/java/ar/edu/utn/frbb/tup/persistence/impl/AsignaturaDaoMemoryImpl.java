@@ -19,7 +19,7 @@ public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
     @Override
     public Asignatura saveAsignatura(Materia materia) {
         Random id = new Random();
-        Asignatura asignatura = new Asignatura(materia, id);
+        Asignatura asignatura = new Asignatura(materia);
         return repositorioAsignaturas.put(asignatura.getId(), asignatura);
     }
 
@@ -35,6 +35,13 @@ public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
             );
         }
     }
+
+    @Override
+    public void actualizarAsignatura(Asignatura asignatura) throws AsignaturaNotFoundException {
+        Asignatura asignatura2 = getAsignaturaById(asignatura.getId());
+        repositorioAsignaturas.put(asignatura2.getId(), asignatura2);
+    }
+
     @Override
     public List<Asignatura> getListAsignaturas() {
         return null;
