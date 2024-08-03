@@ -19,17 +19,17 @@ public class ProfesorController {
         return profesorService.crearProfesor(profesorDto);
     }
 
-    @PutMapping("/profesor/{idProfesor}")
+    @PutMapping("/{idProfesor}")
     public Profesor modificarProfesor(@PathVariable("idProfesor") Long id) throws ProfesorNotFoundException {
         return profesorService.modificarProfesor(id);
     }
 
     @DeleteMapping("/carrera/{idProfesor}")
-    public Profesor eliminarProfesor(@RequestParam Long id) throws ProfesorNotFoundException {
+    public Profesor eliminarProfesor(@PathVariable Long id) throws ProfesorNotFoundException {
         return profesorService.eliminarProfesor(id);
     }
 
-    @GetMapping("/profesor/{idProfesor}/materias")
+    @GetMapping("/{idProfesor}/materias")
     public Profesor MateriasDictadas(@PathVariable Long idProfesor) throws ProfesorNotFoundException {
         return MateriasDictadas(idProfesor);
     }

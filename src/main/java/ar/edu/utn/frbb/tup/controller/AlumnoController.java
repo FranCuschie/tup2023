@@ -25,13 +25,13 @@ public class AlumnoController {
         return alumnoService.crearAlumno(alumnoDto);
     }
 
-    @PutMapping("/alumno/{idAlumno}")
+    @PutMapping("/{idAlumno}")
     public Alumno modificarAlumno(@PathVariable("idAlumno") Long idAlumno) throws AlumnoNotFoundException {
         return alumnoService.buscarAlumno(idAlumno);
     }
 
     @DeleteMapping("/{idAlumno}")
-    public Alumno eliminarAlumno(@RequestParam Long idAlumno) throws AlumnoNotFoundException {
+    public Alumno eliminarAlumno(@PathVariable Long idAlumno) throws AlumnoNotFoundException {
         return alumnoService.eliminarAlumno(idAlumno);
     }
 
