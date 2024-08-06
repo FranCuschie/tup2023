@@ -26,7 +26,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 
     @Override
-    public Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, AsignaturaNotFoundException, AsignaturaInexistenteException, CorrelatividadException {
+    public Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, AsignaturaNotFoundException, AsignaturaInexistenteException, CorrelatividadException, AlumnoNotFoundException {
         Alumno alumno = alumnoDao.findAlumno(idAlumno);
         Asignatura asignatura = asignaturaService.getAsignatura(idAsignatura);
         if (asignaturaDto.getEstado().equals(EstadoAsignatura.APROBADA)){

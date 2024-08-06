@@ -1,11 +1,14 @@
 package ar.edu.utn.frbb.tup.persistence.impl;
 
+import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.persistence.ProfesorDao;
+import ar.edu.utn.frbb.tup.persistence.exception.ProfesorNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -45,6 +48,16 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
         throw new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "No existe profesor con esos datos."
         );
+    }
+
+    @Override
+    public List<Materia> getMateriasDictadas(Long id) throws ProfesorNotFoundException {
+        Profesor profesor = repositorioProfesores.get(id);
+        if (profesor == null){
+            throw new ProfesorNotFoundException("No se pudo encontrar un profesor con ese id");
+        }
+        List<Materia> listaMaterias = profesor.getMateriasDictadas();
+        return listaMaterias;
     }
 
 

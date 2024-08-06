@@ -62,7 +62,7 @@ public class ProfesorServiceImpl implements ProfesorService {
     @Override
     public Profesor materiasDictadas(Long idProfesor) throws  ProfesorNotFoundException {
         List listaOrdenada;
-        listaOrdenada = profesorDao.findProfesor(idProfesor).getMateriasDictadas();
+        listaOrdenada = profesorDao.getMateriasDictadas(idProfesor);
         Collections.sort(listaOrdenada);
         return (Profesor) listaOrdenada;
     }

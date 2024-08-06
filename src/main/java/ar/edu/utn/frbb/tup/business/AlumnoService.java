@@ -13,7 +13,7 @@ import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
 
 public interface AlumnoService {
 
-    Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, CorrelatividadesNoAprobadasException, AsignaturaNotFoundException, AsignaturaInexistenteException, CorrelatividadException;
+    Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, CorrelatividadesNoAprobadasException, AsignaturaNotFoundException, AsignaturaInexistenteException, CorrelatividadException, AlumnoNotFoundException;
 
     Alumno crearAlumno(AlumnoDto alumnoDto);
 
