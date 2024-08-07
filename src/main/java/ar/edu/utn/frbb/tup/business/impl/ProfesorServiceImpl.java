@@ -1,6 +1,7 @@
 package ar.edu.utn.frbb.tup.business.impl;
 
 import ar.edu.utn.frbb.tup.business.ProfesorService;
+import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 import ar.edu.utn.frbb.tup.persistence.MateriaDao;
@@ -60,11 +61,11 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor materiasDictadas(Long idProfesor) throws  ProfesorNotFoundException {
+    public List<Materia> materiasDictadas(Long idProfesor) throws  ProfesorNotFoundException {
         List listaOrdenada;
         listaOrdenada = profesorDao.getMateriasDictadas(idProfesor);
         Collections.sort(listaOrdenada);
-        return (Profesor) listaOrdenada;
+        return listaOrdenada;
     }
 
 

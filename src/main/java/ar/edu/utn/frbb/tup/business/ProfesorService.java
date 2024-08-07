@@ -1,8 +1,11 @@
 package ar.edu.utn.frbb.tup.business;
 
+import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 import ar.edu.utn.frbb.tup.persistence.exception.ProfesorNotFoundException;
+
+import java.util.List;
 
 public interface ProfesorService {
     Profesor crearProfesor(ProfesorDto profesorDto);
@@ -13,6 +16,6 @@ public interface ProfesorService {
 
     Profesor buscarProfesorById(Long idProfesor) throws ProfesorNotFoundException;
 
-    Profesor materiasDictadas(Long idProfesor) throws ProfesorNotFoundException;
+    List<Materia> materiasDictadas(Long idProfesor) throws ProfesorNotFoundException;
 
 }

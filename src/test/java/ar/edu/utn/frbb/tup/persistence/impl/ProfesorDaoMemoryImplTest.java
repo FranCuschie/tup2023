@@ -25,7 +25,7 @@ public class ProfesorDaoMemoryImplTest {
     MockMvc mockMvc;
     Materia materia, materia2, materia3;
 
-    Profesor profesorCargado, profesorCargado2;
+    Profesor profesorCargado;
 
     private static ObjectMapper mapper = new ObjectMapper();
 
