@@ -44,7 +44,7 @@ public class ProfesorDaoMemoryImplTest {
     }
 
     @Test
-    public void testProfesorSave() throws ProfesorNotFoundException {
+    public void testSaveProfesor() throws ProfesorNotFoundException {
         profesorCargado = new Profesor(222222,"Luciano", "Salotto", "Progamador");
         profesorDaoMemory.saveProfesor(profesorCargado);
         Profesor profesorEncontrado = profesorDaoMemory.findProfesor(profesorCargado.getId());
@@ -52,8 +52,8 @@ public class ProfesorDaoMemoryImplTest {
     }
 
     @Test
-    public void testProfesorFindProfesor() throws ProfesorNotFoundException{
-        profesorCargado = new Profesor(2222222,"Luciano", "Salotto", "Progamador");
+    public void testProfesorFindProfesor() throws ProfesorNotFoundException {
+        profesorCargado = new Profesor(222222,"Luciano", "Salotto", "Progamador");
         profesorDaoMemory.saveProfesor(profesorCargado);
         Profesor profesorEncontrado = profesorDaoMemory.findProfesor(profesorCargado.getId());
         assertEquals(profesorCargado, profesorEncontrado);

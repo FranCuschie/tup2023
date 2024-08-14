@@ -28,7 +28,7 @@ public class AsignaturaTest{
 
     @Test
     public void testAsignaturaSetAtributos() {
-        asignatura = new Asignatura();
+        asignatura = new Asignatura(materia, id);
         asignatura.setId((long) 1);
         asignatura.setEstado(EstadoAsignatura.APROBADA);
         asignatura.setNota(10);

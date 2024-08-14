@@ -1,6 +1,8 @@
 package ar.edu.utn.frbb.tup.controller.handler;
 
+import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.exception.AlumnoNotFoundException;
+import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
 import ar.edu.utn.frbb.tup.persistence.exception.MateriaNotFoundException;
 import ar.edu.utn.frbb.tup.persistence.exception.ProfesorNotFoundException;
 import org.springframework.http.HttpHeaders;
@@ -16,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class UtnResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value
-            = {MateriaNotFoundException.class})
+            = {MateriaNotFoundException.class, ProfesorNotFoundException.class, AlumnoNotFoundException.class, AsignaturaNotFoundException.class})
     protected ResponseEntity<Object> handleMateriaNotFound(
             MateriaNotFoundException ex, WebRequest request) {
         String exceptionMessage = ex.getMessage();
@@ -26,34 +28,16 @@ public class UtnResponseEntityExceptionHandler extends ResponseEntityExceptionHa
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
-    @ExceptionHandler(value = {ProfesorNotFoundException.class})
-    protected ResponseEntity<Object> handleProfesorNotFound(ProfesorNotFoundException ex, WebRequest request){
-        String exceptionMessage = ex.getMessage();
-        CustomApiError error = new CustomApiError();
-        error.setErrorMessage(exceptionMessage);
-        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
-    }
-
-    @ExceptionHandler(value = {AlumnoNotFoundException.class})
-    protected ResponseEntity<Object> handleAlumnoNotFound(ProfesorNotFoundException ex, WebRequest request){
-        String exceptionMessage = ex.getMessage();
-        CustomApiError error = new CustomApiError();
-        error.setErrorMessage(exceptionMessage);
-        return handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
-    }
-
     @ExceptionHandler(value
-            = { IllegalArgumentException.class, IllegalStateException.class })
-    protected ResponseEntity<Object> handleConflict(
-            RuntimeException ex, WebRequest request) {
+            = {EstadoIncorrectoException.class})
+    protected ResponseEntity<Object> notApproved(
+            Exception ex, WebRequest request) {
         String exceptionMessage = ex.getMessage();
         CustomApiError error = new CustomApiError();
-        error.setErrorCode(1234);
         error.setErrorMessage(exceptionMessage);
         return handleExceptionInternal(ex, error,
-                new HttpHeaders(), HttpStatus.CONFLICT, request);
+                new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
-
 
 
     //@Override

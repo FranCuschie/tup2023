@@ -41,9 +41,9 @@ public class AlumnoTest {
         m4.agregarCorrelatividad(m1);
         m4.agregarCorrelatividad(m2);
         m4.agregarCorrelatividad(m3);
-        a1 = new Asignatura();
-        a2 = new Asignatura();
-        a3 = new Asignatura();
+        a1 = new Asignatura(materia, id);
+        a2 = new Asignatura(materia, id);
+        a3 = new Asignatura(materia, id);
         a4 = new Asignatura(m1);
     }
 

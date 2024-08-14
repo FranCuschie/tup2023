@@ -4,8 +4,6 @@ import ar.edu.utn.frbb.tup.model.Asignatura;
 import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.persistence.AsignaturaDao;
 import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +17,7 @@ public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
     @Override
     public Asignatura saveAsignatura(Materia materia) {
         Random id = new Random();
-        Asignatura asignatura = new Asignatura(materia);
+        Asignatura asignatura = new Asignatura(materia, id);
         return repositorioAsignaturas.put(asignatura.getId(), asignatura);
     }
 
@@ -30,9 +28,7 @@ public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
             return asignaturaExistente;
         }
         else {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "No existe Asignatura con ese id."
-            );
+            throw new AsignaturaNotFoundException("No existe Asignatura con ese id.");
         }
     }
 

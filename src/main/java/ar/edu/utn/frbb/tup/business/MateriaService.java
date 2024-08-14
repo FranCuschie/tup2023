@@ -13,5 +13,5 @@ public interface MateriaService {
 
     List<Materia> getAllMaterias();
 
-    Materia getMateriaById(int idMateria) throws MateriaNotFoundException;
+    Materia getMateriaById(Integer idMateria) throws MateriaNotFoundException;
 }

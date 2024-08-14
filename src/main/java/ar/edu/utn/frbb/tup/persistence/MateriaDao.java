@@ -10,4 +10,6 @@ public interface MateriaDao {
     Materia save(Materia materia, List<Materia> correlatividades);
 
     Materia findById(int idMateria) throws MateriaNotFoundException;
+
+    List<Materia> getAllMaterias();
 }

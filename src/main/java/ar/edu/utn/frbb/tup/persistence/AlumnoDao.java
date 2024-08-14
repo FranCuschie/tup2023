@@ -8,8 +8,6 @@ public interface AlumnoDao {
 
     Alumno findAlumno(Long idAlumno) throws AlumnoNotFoundException;
 
-    Alumno loadAlumno(Long dni) throws AlumnoNotFoundException;
-
     Alumno deleteAlumno(Long id) throws AlumnoNotFoundException;
 
 }

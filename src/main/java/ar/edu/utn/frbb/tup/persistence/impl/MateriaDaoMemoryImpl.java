@@ -5,10 +5,7 @@ import ar.edu.utn.frbb.tup.persistence.MateriaDao;
 import ar.edu.utn.frbb.tup.persistence.exception.MateriaNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class MateriaDaoMemoryImpl implements MateriaDao {
@@ -31,6 +28,15 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
             }
         }
         throw new MateriaNotFoundException("No se encontró la materia con id " + idMateria);
+    }
+
+    @Override
+    public List<Materia> getAllMaterias() {
+        List<Materia> listaMaterias = new ArrayList<>();
+        for (Materia materia : repositorioMateria.values()){
+            listaMaterias.add(materia);
+        }
+        return listaMaterias;
     }
 
 
