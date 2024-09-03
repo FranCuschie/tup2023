@@ -20,7 +20,7 @@ public class AsignaturaTest{
 
     @Test
     public void testNewAsignatura() {
-        Asignatura asignatura = new Asignatura(materia);
+        Asignatura asignatura = new Asignatura(materia, 1L);
         assertEquals(EstadoAsignatura.NO_CURSADA, asignatura.getEstado());
         assertFalse(asignatura.getNota().isPresent());
         assertEquals("Laboratorio 3", asignatura.getNombreAsignatura());
@@ -28,7 +28,7 @@ public class AsignaturaTest{
 
     @Test
     public void testAsignaturaSetAtributos() {
-        asignatura = new Asignatura(materia, id);
+        asignatura = new Asignatura();
         asignatura.setId((long) 1);
         asignatura.setEstado(EstadoAsignatura.APROBADA);
         asignatura.setNota(10);
@@ -41,7 +41,7 @@ public class AsignaturaTest{
 
     @Test
     public void testAprobarAasignatura() throws EstadoIncorrectoException {
-        asignatura = new Asignatura(materia);
+        asignatura = new Asignatura(materia, 1L);
         assertEquals(EstadoAsignatura.NO_CURSADA,asignatura.getEstado());
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(10);
@@ -51,7 +51,7 @@ public class AsignaturaTest{
 
     @Test
     public void testCursarAsignaturaYaCursada() throws EstadoIncorrectoException {
-        asignatura = new Asignatura(materia);
+        asignatura = new Asignatura(materia, 1L);
         assertEquals(EstadoAsignatura.NO_CURSADA,asignatura.getEstado());
         asignatura.cursarAsignatura();
         assertThrows(EstadoIncorrectoException.class, () -> {
@@ -62,7 +62,7 @@ public class AsignaturaTest{
 
     @Test
     public void testCursarAsignaturaYaAprobada() throws EstadoIncorrectoException{
-        asignatura = new Asignatura(materia);
+        asignatura = new Asignatura(materia, 1L);
         assertEquals(EstadoAsignatura.NO_CURSADA,asignatura.getEstado());
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(10);
@@ -74,7 +74,7 @@ public class AsignaturaTest{
 
     @Test
     public void testAprobarAsignaturaYaAprobada() throws EstadoIncorrectoException {
-        asignatura = new Asignatura(materia);
+        asignatura = new Asignatura(materia, 1L);
         assertEquals(EstadoAsignatura.NO_CURSADA,asignatura.getEstado());
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(10);

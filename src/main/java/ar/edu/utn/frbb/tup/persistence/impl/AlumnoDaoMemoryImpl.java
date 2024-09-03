@@ -17,7 +17,7 @@ public class AlumnoDaoMemoryImpl implements AlumnoDao {
     @Override
     public Alumno saveAlumno(Alumno alumno) {
         Random random = new Random();
-        alumno.setId(random.nextLong());
+        alumno.setId(random.nextLong(999));
         return repositorioAlumnos.put(alumno.getId(), alumno);
     }
 

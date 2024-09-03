@@ -14,7 +14,7 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
     @Override
     public Materia save(Materia materia, List<Materia> correlatividades) {
         Random random = new Random();
-        materia.setMateriaId(random.nextInt());
+        materia.setMateriaId(random.nextInt(999));
         repositorioMateria.put(materia.getMateriaId(), materia);
         return materia;
     }

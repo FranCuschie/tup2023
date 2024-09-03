@@ -18,7 +18,7 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
     @Override
     public Profesor saveProfesor(Profesor profesor) {
         Random random = new Random();
-        profesor.setId(random.nextLong());
+        profesor.setId(random.nextLong(999));
         return repositorioProfesores.put(profesor.getId(), profesor);
     }
 

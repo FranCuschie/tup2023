@@ -1,6 +1,5 @@
 package ar.edu.utn.frbb.tup.model;
 
-import ar.edu.utn.frbb.tup.model.exception.AsignaturaInexistenteException;
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadException;
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
@@ -41,10 +40,9 @@ public class AlumnoTest {
         m4.agregarCorrelatividad(m1);
         m4.agregarCorrelatividad(m2);
         m4.agregarCorrelatividad(m3);
-        a1 = new Asignatura(materia, id);
-        a2 = new Asignatura(materia, id);
-        a3 = new Asignatura(materia, id);
-        a4 = new Asignatura(m1);
+        a1 = new Asignatura(m1, 1L);
+        a2 = new Asignatura(m2, 2L);
+        a3 = new Asignatura(m3, 3L);
     }
 
     @Test
@@ -81,8 +79,8 @@ public class AlumnoTest {
     @Test
     public void testAlumnoCursarSinCorrelativasAprobadas() throws EstadoIncorrectoException, CorrelatividadException {
         alumno = new Alumno("Francisco", "Cuschie", 41198725);
-        a1 = new Asignatura(m1);
-        a2 = new Asignatura(m2);
+        a1 = new Asignatura(m1, 1L);
+        a2 = new Asignatura(m2, 2L);
         alumno.agregarAsignatura(a1);
         alumno.agregarAsignatura(a2);
         alumno.cursarAsignatura(a1);
@@ -94,7 +92,7 @@ public class AlumnoTest {
     @Test
     public void testAlumnoAprobarAsignaturaSinQueEsteEnSusAsignaturas() {
         alumno = new Alumno("Francisco", "Cuschie", 41198725);
-        a1 = new Asignatura(m1);
+        a1 = new Asignatura(m1, 1L);
         assertThrows(AsignaturaNotFoundException.class, () -> {
             alumno.aprobarAsignatura(a1, 10);
         });
@@ -103,7 +101,7 @@ public class AlumnoTest {
     @Test
     public void testAlumnoAprobarAsignaturaSinCursarla() {
         alumno = new Alumno("Francisco", "Cuschie", 41198725);
-        a1 = new Asignatura(m1);
+        a1 = new Asignatura(m1, 1L);
         alumno.agregarAsignatura(a1);
         assertThrows(EstadoIncorrectoException.class, () -> {
             alumno.aprobarAsignatura(a1, 10);
@@ -113,8 +111,8 @@ public class AlumnoTest {
     @Test
     public void testAlumnoAprobarSinCorrelativasCursadas() {
         alumno = new Alumno("Francisco", "Cuschie", 41198725);
-        a1 = new Asignatura(m1);
-        a2 = new Asignatura(m2);
+        a1 = new Asignatura(m1, 1L);
+        a2 = new Asignatura(m2, 2L);
         alumno.agregarAsignatura(a1);
         alumno.agregarAsignatura(a2);
         assertThrows(CorrelatividadesNoAprobadasException.class, () -> {
@@ -125,8 +123,8 @@ public class AlumnoTest {
     @Test
     public void testAlumnoCursarAsignatura() throws EstadoIncorrectoException, CorrelatividadException, AsignaturaInexistenteException {
         alumno = new Alumno("Francisco", "Cuschie", 41198725);
-        a1 = new Asignatura(m1);
-        a2 = new Asignatura(m2);
+        a1 = new Asignatura(m1, 1L);
+        a2 = new Asignatura(m2, 2L);
         alumno.agregarAsignatura(a1);
         alumno.agregarAsignatura(a2);
         alumno.cursarAsignatura(a1);

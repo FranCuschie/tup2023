@@ -16,8 +16,9 @@ public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
 
     @Override
     public Asignatura saveAsignatura(Materia materia) {
-        Random id = new Random();
-        Asignatura asignatura = new Asignatura(materia, id);
+        // Genero un random en formato Long
+        Random random = new Random();
+        Asignatura asignatura = new Asignatura(materia, random.nextLong(999));
         return repositorioAsignaturas.put(asignatura.getId(), asignatura);
     }
 

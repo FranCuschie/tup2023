@@ -7,7 +7,6 @@ import ar.edu.utn.frbb.tup.model.Asignatura;
 import ar.edu.utn.frbb.tup.model.EstadoAsignatura;
 import ar.edu.utn.frbb.tup.model.dto.AlumnoDto;
 import ar.edu.utn.frbb.tup.model.dto.AsignaturaDto;
-import ar.edu.utn.frbb.tup.model.exception.AsignaturaInexistenteException;
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.AlumnoDao;
@@ -26,7 +25,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 
     @Override
-    public Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, AsignaturaNotFoundException, AsignaturaInexistenteException, CorrelatividadException, AlumnoNotFoundException {
+    public Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, AsignaturaNotFoundException, CorrelatividadException, AlumnoNotFoundException {
         Alumno alumno = alumnoDao.findAlumno(idAlumno);
         Asignatura asignatura = asignaturaService.getAsignatura(idAsignatura);
         if (asignaturaDto.getEstado().equals(EstadoAsignatura.APROBADA)){
