@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MateriaService {
 
-    Materia crearMateria(MateriaDto materiaDto) throws ProfesorNotFoundException;
+    Materia crearMateria(MateriaDto materiaDto) throws ProfesorNotFoundException, MateriaNotFoundException;
 
     List<Materia> getAllMaterias();
 

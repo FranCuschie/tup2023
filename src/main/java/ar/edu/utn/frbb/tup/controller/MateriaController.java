@@ -28,7 +28,7 @@ public class MateriaController {
     }
 
     @PostMapping
-    public Materia crearMateria(@RequestBody MateriaDto materiaDto) throws ProfesorNotFoundException {
+    public Materia crearMateria(@RequestBody MateriaDto materiaDto) throws ProfesorNotFoundException, MateriaNotFoundException {
         return materiaService.crearMateria(materiaDto);
     }
 

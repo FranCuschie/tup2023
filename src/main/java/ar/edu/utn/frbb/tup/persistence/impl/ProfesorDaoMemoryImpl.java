@@ -46,6 +46,11 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
     }
 
     @Override
+    public void update(Long idProfesor, Profesor profesor) {
+        repositorioProfesores.put(idProfesor, profesor);
+    }
+
+    @Override
     public List<Materia> getMateriasDictadas(Long id) throws ProfesorNotFoundException {
         Profesor profesor = repositorioProfesores.get(id);
         if (profesor != null){

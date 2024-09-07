@@ -21,15 +21,16 @@ public class MateriaTest {
     @Test
     public void testMateriaSetearAtributos() {
         materia = new Materia();
-        materia.setMateriaId(1);
+        materia.setMateriaId(2);
         materia.setNombre("Laboratorio III");
-        materia.setAnio(1);
+        materia.setAnio(2);
         materia.setCuatrimestre(1);
         materia.setProfesor(profesor);
         materia.setCorrelatividades(new ArrayList<>());
-        assertEquals(materia.getMateriaId(), 1);
+        profesor.getMateriasDictadas().add(materia);
+        assertEquals(materia.getMateriaId(), 2);
         assertEquals(materia.getNombre(), "Laboratorio III");
-        assertEquals(materia.getAnio(), 1);
+        assertEquals(materia.getAnio(), 2);
         assertEquals(materia.getCuatrimestre(), 1);
         assertEquals(materia.getProfesor(), profesor);
         assertEquals(materia.getCorrelatividades(), new ArrayList<>());

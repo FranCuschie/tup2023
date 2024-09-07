@@ -1,5 +1,6 @@
 package ar.edu.utn.frbb.tup.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Carrera {
@@ -11,9 +12,11 @@ public class Carrera {
     public Carrera(String nombre, int cantidadAnios) {
         this.nombre = nombre;
         this.cantidadAnios = cantidadAnios;
+        this.materiasList = new ArrayList<>();
     }
 
     public void agregarMateria(Materia materia) {
+        materiasList.add(materia);
     }
 
     public String getNombre() {

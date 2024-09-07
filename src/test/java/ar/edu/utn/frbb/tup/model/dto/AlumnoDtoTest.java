@@ -16,7 +16,7 @@ public class AlumnoDtoTest {
         alumnoDto.setApellido("Cuschie");
         assertEquals(alumnoDto.getNombre(), "Francisco");
         assertEquals(alumnoDto.getApellido(), "Cuschie");
-        assertEquals(alumnoDto.getDni(), 4119725);
+        assertEquals(alumnoDto.getDni(), 41198725);
     }
 
 }

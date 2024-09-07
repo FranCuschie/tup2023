@@ -13,6 +13,9 @@ public interface ProfesorDao {
 
     Profesor deleteProfesor(Long idProfesor) throws ProfesorNotFoundException;
 
+    void update(Long idProfesor, Profesor profesor) throws ProfesorNotFoundException;
+
     List<Materia> getMateriasDictadas(Long id) throws ProfesorNotFoundException;
+
 
 }

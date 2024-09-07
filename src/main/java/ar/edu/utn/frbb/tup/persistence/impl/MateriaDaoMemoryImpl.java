@@ -12,7 +12,7 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
 
     private static final Map<Integer, Materia> repositorioMateria = new HashMap<>();
     @Override
-    public Materia save(Materia materia, List<Materia> correlatividades) {
+    public Materia save(Materia materia, int[] correlatividades) {
         Random random = new Random();
         materia.setMateriaId(random.nextInt(999));
         repositorioMateria.put(materia.getMateriaId(), materia);

@@ -3,6 +3,7 @@ package ar.edu.utn.frbb.tup.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Profesor {
 
     private long id;
@@ -13,6 +14,7 @@ public class Profesor {
     private List<Materia> materiasDictadas;
 
     public Profesor() {
+        materiasDictadas = new ArrayList<>();
     }
 
     public Profesor(long dni, String nombre, String apellido, String titulo) {
@@ -20,8 +22,6 @@ public class Profesor {
         this.apellido = apellido;
         this.titulo = titulo;
         this.dni = dni;
-
-        materiasDictadas = new ArrayList<>();
     }
 
     public long getId() {

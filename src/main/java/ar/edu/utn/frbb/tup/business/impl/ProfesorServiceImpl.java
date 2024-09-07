@@ -46,8 +46,8 @@ public class ProfesorServiceImpl implements ProfesorService {
         profe.setApellido(profesor.getApellido());
         profe.setTitulo(profesor.getTitulo());
         profe.setDni(profesor.getDni());
-        profesorDao.saveProfesor(profe);
-        return null;
+        profesorDao.update(idProfesor, profe);
+        return profe;
     }
 
     @Override
@@ -66,6 +66,11 @@ public class ProfesorServiceImpl implements ProfesorService {
         listaOrdenada = profesorDao.getMateriasDictadas(idProfesor);
         Collections.sort(listaOrdenada);
         return listaOrdenada;
+    }
+
+    @Override
+    public void actualizarProfesor(Profesor profesor) throws ProfesorNotFoundException {
+        profesorDao.update(profesor.getId(), profesor);
     }
 
 

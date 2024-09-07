@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AsignaturaDtoTest {
+
     private static AsignaturaDto asignaturaDto;
     @Test
     public void testAsignaturaDtoSetAtributos() {

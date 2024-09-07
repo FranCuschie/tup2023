@@ -17,7 +17,7 @@ public class ProfesorController {
     @Autowired
     private ProfesorService profesorService;
 
-    @PostMapping("/")
+    @PostMapping
     public Profesor crearProfesor(@RequestBody ProfesorDto profesorDto) {
         return profesorService.crearProfesor(profesorDto);
     }

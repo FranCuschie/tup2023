@@ -5,7 +5,6 @@ import ar.edu.utn.frbb.tup.model.Asignatura;
 import ar.edu.utn.frbb.tup.model.dto.AlumnoDto;
 import ar.edu.utn.frbb.tup.model.dto.AsignaturaDto;
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadException;
-import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.exception.AlumnoNotFoundException;
 import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
@@ -36,7 +35,7 @@ public class AlumnoController {
 
     @PutMapping("/{idAlumno}/asignaturas/{idAsignatura}")
     public Asignatura actualizarEstado(@PathVariable("idAlumno") Long idAlumno, @PathVariable("idAsignatura") Long idAsignatura, @RequestBody AsignaturaDto asignaturaDto) throws AlumnoNotFoundException, AsignaturaNotFoundException,
-            CorrelatividadesNoAprobadasException, EstadoIncorrectoException, CorrelatividadException {
+            EstadoIncorrectoException, CorrelatividadException {
         return alumnoService.actualizarEstadoAsignatura(idAlumno, idAsignatura, asignaturaDto);
     }
 

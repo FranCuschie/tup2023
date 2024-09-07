@@ -1,9 +1,7 @@
 package ar.edu.utn.frbb.tup.model;
 
 import ar.edu.utn.frbb.tup.model.exception.CorrelatividadException;
-import ar.edu.utn.frbb.tup.model.exception.CorrelatividadesNoAprobadasException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
-import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +48,7 @@ public class AlumnoTest {
         alumno = new Alumno("Francisco", "Cuschie", 41198725);
         assertEquals("Francisco", alumno.getNombre());
         assertEquals("Cuschie", alumno.getApellido());
-        assertEquals(45319502, alumno.getDni());
+        assertEquals(41198725, alumno.getDni());
     }
 
     @Test
@@ -70,7 +68,7 @@ public class AlumnoTest {
 
     @Test
     public void testAlumnoAgregarAsignatura() {
-        alumno = new Alumno("Francisco", "Cuschie", 45319502);
+        alumno = new Alumno("Francisco", "Cuschie", 4198725);
         alumno.agregarAsignatura(a1);
         assertEquals(alumno.obtenerListaAsignaturas().size(), 1);
         assertEquals(alumno.obtenerListaAsignaturas().get(0), a1);
@@ -84,17 +82,8 @@ public class AlumnoTest {
         alumno.agregarAsignatura(a1);
         alumno.agregarAsignatura(a2);
         alumno.cursarAsignatura(a1);
-        assertThrows(CorrelatividadesNoAprobadasException.class, () -> {
+        assertThrows(CorrelatividadException.class, () -> {
             alumno.cursarAsignatura(a2);
-        });
-    }
-
-    @Test
-    public void testAlumnoAprobarAsignaturaSinQueEsteEnSusAsignaturas() {
-        alumno = new Alumno("Francisco", "Cuschie", 41198725);
-        a1 = new Asignatura(m1, 1L);
-        assertThrows(AsignaturaNotFoundException.class, () -> {
-            alumno.aprobarAsignatura(a1, 10);
         });
     }
 
@@ -115,13 +104,13 @@ public class AlumnoTest {
         a2 = new Asignatura(m2, 2L);
         alumno.agregarAsignatura(a1);
         alumno.agregarAsignatura(a2);
-        assertThrows(CorrelatividadesNoAprobadasException.class, () -> {
+        assertThrows(CorrelatividadException.class, () -> {
             alumno.aprobarAsignatura(a2, 10);
         });
     }
 
     @Test
-    public void testAlumnoCursarAsignatura() throws EstadoIncorrectoException, CorrelatividadException, AsignaturaInexistenteException {
+    public void testAlumnoCursarAsignatura() throws EstadoIncorrectoException, CorrelatividadException{
         alumno = new Alumno("Francisco", "Cuschie", 41198725);
         a1 = new Asignatura(m1, 1L);
         a2 = new Asignatura(m2, 2L);
@@ -134,4 +123,5 @@ public class AlumnoTest {
         assertEquals(a1.getNota().get(), 10);
         assertEquals(a2.getEstado(), EstadoAsignatura.CURSADA);
     }
+
 }

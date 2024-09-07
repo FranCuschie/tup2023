@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AsignaturaTest{
+
     private static Asignatura asignatura;
 
     private static Materia materia;

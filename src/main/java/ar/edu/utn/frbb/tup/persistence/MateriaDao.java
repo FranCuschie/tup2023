@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface MateriaDao {
 
-    Materia save(Materia materia, List<Materia> correlatividades);
+    Materia save(Materia materia, int[] correlatividades) throws MateriaNotFoundException;
 
     Materia findById(int idMateria) throws MateriaNotFoundException;
 

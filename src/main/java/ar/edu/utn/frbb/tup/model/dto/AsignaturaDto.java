@@ -3,8 +3,8 @@ package ar.edu.utn.frbb.tup.model.dto;
 import ar.edu.utn.frbb.tup.model.EstadoAsignatura;
 
 public class AsignaturaDto {
-    private int nota;
 
+    private int nota;
     private EstadoAsignatura estado;
 
     public void setNota(int nota) {

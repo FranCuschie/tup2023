@@ -18,4 +18,6 @@ public interface ProfesorService {
 
     List<Materia> materiasDictadas(Long idProfesor) throws ProfesorNotFoundException;
 
+    void actualizarProfesor(Profesor profesor) throws ProfesorNotFoundException;
+
 }

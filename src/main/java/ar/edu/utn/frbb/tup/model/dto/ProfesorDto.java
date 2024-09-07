@@ -1,16 +1,11 @@
 package ar.edu.utn.frbb.tup.model.dto;
 
-import ar.edu.utn.frbb.tup.model.Materia;
-
-import java.util.List;
-
 public class ProfesorDto {
 
     private String nombre;
     private String apellido;
     private String titulo;
     private long dni;
-    private List<Materia> materiasDictadas;
 
     public String getNombre() {
         return nombre;
@@ -44,11 +39,4 @@ public class ProfesorDto {
         this.dni = dni;
     }
 
-    public List<Materia> getMateriasDictadas() {
-        return materiasDictadas;
-    }
-
-    public void setMateriasDictadas(List<Materia> materiasDictadas) {
-        this.materiasDictadas = materiasDictadas;
-    }
 }

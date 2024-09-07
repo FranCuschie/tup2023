@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProfesorTest {
-    private static Profesor profesor;
 
+    private static Profesor profesor;
     private static Materia materia;
 
     @BeforeAll
@@ -22,8 +22,9 @@ public class ProfesorTest {
         profesor.setNombre("Luciano");
         profesor.setApellido("Salotto");
         profesor.setTitulo("Programador");
+        profesor.setDni(222222L);
         profesor.setMateriasDictadas(materia);
-        assertEquals(profesor.getDni(), 2222222);
+        assertEquals(profesor.getDni(), 222222L);
         assertEquals(profesor.getId(), 1);
         assertEquals(profesor.getNombre(), "Luciano");
         assertEquals(profesor.getApellido(), "Salotto");
