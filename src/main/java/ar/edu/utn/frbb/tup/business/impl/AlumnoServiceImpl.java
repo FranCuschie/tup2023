@@ -15,6 +15,7 @@ import ar.edu.utn.frbb.tup.persistence.impl.AlumnoDaoMemoryImpl;
 import ar.edu.utn.frbb.tup.persistence.exception.AlumnoNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
 import java.util.Random;
 
 @Component
@@ -61,7 +62,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public Alumno eliminarAlumno(Long idAlumno) throws AlumnoNotFoundException {
+    public Map<Long, Alumno> eliminarAlumno(Long idAlumno) throws AlumnoNotFoundException {
         return alumnoDao.deleteAlumno(idAlumno);
     }
 }

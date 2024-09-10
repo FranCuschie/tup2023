@@ -11,6 +11,8 @@ import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("alumno")
 public class AlumnoController {
@@ -29,7 +31,7 @@ public class AlumnoController {
     }
 
     @DeleteMapping("/{idAlumno}")
-    public Alumno eliminarAlumno(@PathVariable Long idAlumno) throws AlumnoNotFoundException {
+    public Map<Long, Alumno> eliminarAlumno(@PathVariable Long idAlumno) throws AlumnoNotFoundException {
         return alumnoService.eliminarAlumno(idAlumno);
     }
 

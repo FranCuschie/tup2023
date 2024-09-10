@@ -9,6 +9,8 @@ import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.exception.AlumnoNotFoundException;
 import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
 
+import java.util.Map;
+
 public interface AlumnoService {
 
     Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, AsignaturaNotFoundException, CorrelatividadException, AlumnoNotFoundException;
@@ -17,5 +19,5 @@ public interface AlumnoService {
 
     Alumno buscarAlumno(Long idAlumno) throws AlumnoNotFoundException;
 
-    Alumno eliminarAlumno(Long idAlumno) throws  AlumnoNotFoundException;
+    Map<Long, Alumno> eliminarAlumno(Long idAlumno) throws  AlumnoNotFoundException;
 }

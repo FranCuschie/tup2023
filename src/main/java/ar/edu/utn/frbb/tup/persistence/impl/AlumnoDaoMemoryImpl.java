@@ -34,13 +34,14 @@ public class AlumnoDaoMemoryImpl implements AlumnoDao {
     }
 
     @Override
-    public Alumno deleteAlumno(Long idAlumno) throws AlumnoNotFoundException{
+    public Map<Long, Alumno> deleteAlumno(Long idAlumno) throws AlumnoNotFoundException{
         Alumno alumnoExistente = repositorioAlumnos.get(idAlumno);
         if (alumnoExistente != null) {
-            return alumnoExistente;
+            repositorioAlumnos.remove(idAlumno);
         }
         else {
             throw new AlumnoNotFoundException("No existen alumnos con ese ID: " + idAlumno + ".");
         }
+        return repositorioAlumnos;
     }
 }
