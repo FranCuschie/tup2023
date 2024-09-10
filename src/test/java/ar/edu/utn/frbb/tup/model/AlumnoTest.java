@@ -27,7 +27,7 @@ public class AlumnoTest {
     @BeforeAll
     public static void setUp() {
 
-        profesor1 = new Profesor(2403902,"Luciano", "Salotto", "Programador");
+        profesor1 = new Profesor(2222222L,"Luciano", "Salotto", "Programador");
         m1 = new Materia("Laboratorio 1", 1, 1, profesor1);
         m2 = new Materia("Laboratorio 2", 1, 2, profesor1);
         m3 = new Materia("Laboratorio 3", 2, 1, profesor1);
@@ -59,19 +59,19 @@ public class AlumnoTest {
         alumno.setNombre("Francisco");
         alumno.setApellido("Cuschie");
         alumno.setAsignaturas(new ArrayList<>());
-        assertEquals(alumno.getId(), 1);
-        assertEquals(alumno.getDni(), 41198725);
-        assertEquals(alumno.getNombre(), "Francisco");
-        assertEquals(alumno.getApellido(), "Cuschie");
-        assertEquals(alumno.obtenerListaAsignaturas(), new ArrayList<>());
+        assertEquals(1, alumno.getId());
+        assertEquals(41198725, alumno.getDni());
+        assertEquals("Francisco", alumno.getNombre());
+        assertEquals("Cuschie", alumno.getApellido());
+        assertEquals(new ArrayList<>(), alumno.getAsignaturas());
     }
 
     @Test
     public void testAlumnoAgregarAsignatura() {
         alumno = new Alumno("Francisco", "Cuschie", 4198725);
         alumno.agregarAsignatura(a1);
-        assertEquals(alumno.obtenerListaAsignaturas().size(), 1);
-        assertEquals(alumno.obtenerListaAsignaturas().get(0), a1);
+        assertEquals(1, alumno.obtenerListaAsignaturas().size());
+        assertEquals(a1, alumno.obtenerListaAsignaturas().get(0));
     }
 
     @Test
@@ -119,9 +119,9 @@ public class AlumnoTest {
         alumno.cursarAsignatura(a1);
         alumno.aprobarAsignatura(a1,10);
         alumno.cursarAsignatura(a2);
-        assertEquals(a1.getEstado(), EstadoAsignatura.APROBADA);
-        assertEquals(a1.getNota().get(), 10);
-        assertEquals(a2.getEstado(), EstadoAsignatura.CURSADA);
+        assertEquals(EstadoAsignatura.APROBADA, a1.getEstado());
+        assertEquals(10, a1.getNota().get());
+        assertEquals(EstadoAsignatura.CURSADA, a2.getEstado());
     }
 
 }

@@ -19,6 +19,7 @@ public class MateriaController {
     @Autowired
     private MateriaService materiaService;
 
+    // Estaba de antes
     @GetMapping
     public List<Materia> getMaterias() {
         Materia m = new Materia("labo 1", 2, 1, new Profesor(2, "Lucho", "Salotto", "Lic"));
@@ -27,11 +28,13 @@ public class MateriaController {
         return Arrays.asList(m1, m);
     }
 
+    // Post
     @PostMapping
     public Materia crearMateria(@RequestBody MateriaDto materiaDto) throws ProfesorNotFoundException, MateriaNotFoundException {
         return materiaService.crearMateria(materiaDto);
     }
 
+    // Get
     @GetMapping("/{idMateria}")
     public Materia getMateriaById(@PathVariable Integer idMateria) throws MateriaNotFoundException {
         return materiaService.getMateriaById(idMateria);

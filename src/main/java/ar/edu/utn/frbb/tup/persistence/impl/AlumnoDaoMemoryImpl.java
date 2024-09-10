@@ -28,7 +28,7 @@ public class AlumnoDaoMemoryImpl implements AlumnoDao {
             return alumnoExistente;
         }
         else {
-            throw new AlumnoNotFoundException("No existen alumnos con esos datos.");
+            throw new AlumnoNotFoundException("No existen alumnos con ese ID: " + idAlumno + ".");
 
         }
     }
@@ -40,7 +40,7 @@ public class AlumnoDaoMemoryImpl implements AlumnoDao {
             return alumnoExistente;
         }
         else {
-            throw new AlumnoNotFoundException("No existen alumnos con esos datos.");
+            throw new AlumnoNotFoundException("No existen alumnos con ese ID: " + idAlumno + ".");
         }
     }
 }

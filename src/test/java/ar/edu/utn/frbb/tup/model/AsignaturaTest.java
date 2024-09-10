@@ -34,20 +34,20 @@ public class AsignaturaTest{
         asignatura.setEstado(EstadoAsignatura.APROBADA);
         asignatura.setNota(10);
         asignatura.setMateria(materia);
-        assertEquals(asignatura.getId(), 1);
-        assertEquals(asignatura.getEstado(), EstadoAsignatura.APROBADA);
-        assertEquals(asignatura.getNota().get(), 10);
-        assertEquals(asignatura.getMateria(), materia);
+        assertEquals(1, asignatura.getId());
+        assertEquals(EstadoAsignatura.APROBADA, asignatura.getEstado());
+        assertEquals(10, asignatura.getNota().get());
+        assertEquals(materia, asignatura.getMateria());
     }
 
     @Test
     public void testAprobarAasignatura() throws EstadoIncorrectoException {
         asignatura = new Asignatura(materia, 1L);
-        assertEquals(EstadoAsignatura.NO_CURSADA,asignatura.getEstado());
+        assertEquals(EstadoAsignatura.NO_CURSADA, asignatura.getEstado());
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(10);
-        assertEquals(EstadoAsignatura.APROBADA,asignatura.getEstado());
-        assertEquals(asignatura.getNota().get(), 10);
+        assertEquals(EstadoAsignatura.APROBADA, asignatura.getEstado());
+        assertEquals(10, asignatura.getNota().get());
     }
 
     @Test
@@ -58,19 +58,19 @@ public class AsignaturaTest{
         assertThrows(EstadoIncorrectoException.class, () -> {
             asignatura.cursarAsignatura();
         });
-        assertEquals(asignatura.getEstado(), EstadoAsignatura.CURSADA);
+        assertEquals(EstadoAsignatura.CURSADA, asignatura.getEstado());
     }
 
     @Test
     public void testCursarAsignaturaYaAprobada() throws EstadoIncorrectoException{
         asignatura = new Asignatura(materia, 1L);
-        assertEquals(EstadoAsignatura.NO_CURSADA,asignatura.getEstado());
+        assertEquals(EstadoAsignatura.NO_CURSADA, asignatura.getEstado());
         asignatura.cursarAsignatura();
         asignatura.aprobarAsignatura(10);
         assertThrows(EstadoIncorrectoException.class, () -> {
             asignatura.cursarAsignatura();
         });
-        assertEquals(asignatura.getEstado(), EstadoAsignatura.APROBADA);
+        assertEquals(EstadoAsignatura.APROBADA, asignatura.getEstado());
     }
 
     @Test
@@ -82,7 +82,7 @@ public class AsignaturaTest{
         assertThrows(EstadoIncorrectoException.class, () -> {
             asignatura.aprobarAsignatura(10);
         });
-        assertEquals(asignatura.getEstado(), EstadoAsignatura.APROBADA);
+        assertEquals(EstadoAsignatura.APROBADA, asignatura.getEstado());
     }
 
 }

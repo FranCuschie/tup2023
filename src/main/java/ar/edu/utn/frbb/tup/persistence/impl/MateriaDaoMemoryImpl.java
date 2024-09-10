@@ -31,6 +31,11 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
     }
 
     @Override
+    public void deleteMateria(int materiaId) {
+        repositorioMateria.remove(materiaId);
+    }
+
+    @Override
     public List<Materia> getAllMaterias() {
         List<Materia> listaMaterias = new ArrayList<>();
         for (Materia materia : repositorioMateria.values()){

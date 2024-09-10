@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("profesor")
@@ -28,7 +29,7 @@ public class ProfesorController {
     }
 
     @DeleteMapping("/carrera/{idProfesor}")
-    public Profesor eliminarProfesor(@PathVariable("idProfesor") Long id) throws ProfesorNotFoundException {
+    public Map<Long, Profesor> eliminarProfesor(@PathVariable("idProfesor") Long id) throws ProfesorNotFoundException {
         return profesorService.eliminarProfesor(id);
     }
 

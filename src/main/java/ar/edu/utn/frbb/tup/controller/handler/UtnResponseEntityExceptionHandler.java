@@ -19,8 +19,8 @@ public class UtnResponseEntityExceptionHandler extends ResponseEntityExceptionHa
 
     @ExceptionHandler(value
             = {MateriaNotFoundException.class, ProfesorNotFoundException.class, AlumnoNotFoundException.class, AsignaturaNotFoundException.class})
-    protected ResponseEntity<Object> handleMateriaNotFound(
-            MateriaNotFoundException ex, WebRequest request) {
+    protected ResponseEntity<Object> notFound(
+            Exception ex, WebRequest request) {
         String exceptionMessage = ex.getMessage();
         CustomApiError error = new CustomApiError();
         error.setErrorMessage(exceptionMessage);

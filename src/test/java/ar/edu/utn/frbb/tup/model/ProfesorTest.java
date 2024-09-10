@@ -24,12 +24,12 @@ public class ProfesorTest {
         profesor.setTitulo("Programador");
         profesor.setDni(222222L);
         profesor.setMateriasDictadas(materia);
-        assertEquals(profesor.getDni(), 222222L);
-        assertEquals(profesor.getId(), 1);
-        assertEquals(profesor.getNombre(), "Luciano");
-        assertEquals(profesor.getApellido(), "Salotto");
-        assertEquals(profesor.getTitulo(), "Programador");
-        assertEquals(profesor.getMateriasDictadas().get(0), materia);
+        assertEquals(222222L, profesor.getDni());
+        assertEquals(1, profesor.getId());
+        assertEquals("Luciano", profesor.getNombre());
+        assertEquals("Salotto", profesor.getApellido());
+        assertEquals("Programador", profesor.getTitulo());
+        assertEquals(materia, profesor.getMateriasDictadas().get(0));
     }
 
 }

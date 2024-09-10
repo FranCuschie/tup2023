@@ -11,5 +11,7 @@ public interface MateriaDao {
 
     Materia findById(int idMateria) throws MateriaNotFoundException;
 
+    void deleteMateria(int materiaId);
+
     List<Materia> getAllMaterias();
 }

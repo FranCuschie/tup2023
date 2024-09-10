@@ -36,16 +36,19 @@ public class ProfesorServiceImplTest {
         profesorDto.setTitulo("Programador");
 
         Profesor profesor = new Profesor(222222L, "Luciano", "Salotto", "Programador");
-        when(profesorDao.saveProfesor(profesor)).thenReturn(profesor);
+        when(profesorDao.saveProfesor(any(Profesor.class))).thenReturn(profesor);
 
         Profesor profesorCreado = profesorService.crearProfesor(profesorDto);
 
-        assertEquals(profesorCreado.getNombre(), "Luciano");
-        assertEquals(profesorCreado.getApellido(), "Salotto");
+        assertEquals("Luciano", profesorCreado.getNombre());
+        assertEquals("Salotto", profesorCreado.getApellido());
+
+        verify(profesorDao, times(1)).saveProfesor(any(Profesor.class));
+
     }
 
     @Test
-    public void testBuscarProfesorPorById() throws ProfesorNotFoundException {
+    public void testBuscarProfesor() throws ProfesorNotFoundException {
         Profesor profesor = new Profesor(222222L,"Salotto", "Luciano", "Progamador");
         when(profesorDao.findProfesor(1L)).thenReturn(profesor);
 
@@ -54,7 +57,7 @@ public class ProfesorServiceImplTest {
     }
 
     @Test
-    public void testBuscarMateriasDictadasById() throws ProfesorNotFoundException {
+    public void testBuscarMateriasDictadas() throws ProfesorNotFoundException {
         List<Materia> materias = new ArrayList<>();
         materias.add(new Materia("Lab", 1, 1, new Profesor()));
         when(profesorDao.getMateriasDictadas(1L)).thenReturn(materias);
@@ -63,7 +66,7 @@ public class ProfesorServiceImplTest {
     }
 
     @Test
-    public void testDeleteProfesorById() throws ProfesorNotFoundException{
+    public void testDeleteProfesor() throws ProfesorNotFoundException{
         List<Materia> materiasDictadas = new ArrayList<>();
         materiasDictadas.add(new Materia("Programacion", 1, 1, new Profesor()));
         when(profesorDao.getMateriasDictadas(1L)).thenReturn(materiasDictadas);

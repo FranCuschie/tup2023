@@ -13,7 +13,7 @@ public class AsignaturaDtoTest {
         asignaturaDto = new AsignaturaDto();
         asignaturaDto.setEstado(EstadoAsignatura.APROBADA);
         asignaturaDto.setNota(10);
-        assertEquals(asignaturaDto.getNota(), 10);
-        assertEquals(asignaturaDto.getEstado(), EstadoAsignatura.APROBADA);
+        assertEquals( 10, asignaturaDto.getNota());
+        assertEquals(EstadoAsignatura.APROBADA, asignaturaDto.getEstado());
     }
 }

@@ -11,7 +11,7 @@ public class Profesor {
     private String apellido;
     private String titulo;
     private long dni;
-    private List<Materia> materiasDictadas;
+    private List<Materia> materiasDictadas; // Lista de materias
 
     public Profesor() {
         materiasDictadas = new ArrayList<>();

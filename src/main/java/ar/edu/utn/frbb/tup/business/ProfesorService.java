@@ -6,13 +6,14 @@ import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 import ar.edu.utn.frbb.tup.persistence.exception.ProfesorNotFoundException;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProfesorService {
     Profesor crearProfesor(ProfesorDto profesorDto);
 
     Profesor modificarProfesor(Long idProfesor) throws  ProfesorNotFoundException;
 
-    Profesor eliminarProfesor(Long idProfesor) throws ProfesorNotFoundException;
+    Map<Long, Profesor> eliminarProfesor(Long idProfesor) throws ProfesorNotFoundException;
 
     Profesor buscarProfesorById(Long idProfesor) throws ProfesorNotFoundException;
 

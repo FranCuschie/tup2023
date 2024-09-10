@@ -17,11 +17,11 @@ public class MateriaDtoTest {
         materiaDto.setCuatrimestre(1);
         materiaDto.setProfesorId(12L);
         materiaDto.setCorrelatividades(null);
-        assertEquals(materiaDto.getNombre(), "Laboratorio III");
-        assertEquals(materiaDto.getAnio(), 1);
-        assertEquals(materiaDto.getCuatrimestre(), 1);
-        assertEquals(materiaDto.getProfesorId(), 1);
-        assertEquals(materiaDto.getCorrelatividades(), null);
+        assertEquals("Laboratorio III", materiaDto.getNombre());
+        assertEquals(1, materiaDto.getAnio());
+        assertEquals(1, materiaDto.getCuatrimestre());
+        assertEquals(12L, materiaDto.getProfesorId());
+        assertEquals(null, materiaDto.getCorrelatividades());
     }
 
 }

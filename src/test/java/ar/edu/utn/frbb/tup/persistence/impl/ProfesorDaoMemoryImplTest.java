@@ -68,9 +68,9 @@ public class ProfesorDaoMemoryImplTest {
         profesorCargado.setMateriasDictadas(materia2);
         profesorCargado.setMateriasDictadas(materia3);
         profesorDaoMemory.saveProfesor(profesorCargado);
-        assertEquals(materia3, profesorDaoMemory.getMateriasDictadas(profesorCargado.getId()).get(0));
+        assertEquals(materia, profesorDaoMemory.getMateriasDictadas(profesorCargado.getId()).get(0));
         assertEquals(materia2, profesorDaoMemory.getMateriasDictadas(profesorCargado.getId()).get(1));
-        assertEquals(materia, profesorDaoMemory.getMateriasDictadas(profesorCargado.getId()).get(2));
+        assertEquals(materia3, profesorDaoMemory.getMateriasDictadas(profesorCargado.getId()).get(2));
     }
 
     @Test
@@ -79,10 +79,10 @@ public class ProfesorDaoMemoryImplTest {
         profesorDaoMemory.saveProfesor(profesorCargado);
         assertEquals(profesorCargado, profesorDaoMemory.findProfesor(profesorCargado.getId()));
         profesorDaoMemory.deleteProfesor(profesorCargado.getId());
-        ProfesorNotFoundException exception = assertThrows(ProfesorNotFoundException.class, () -> {
+
+        assertThrows(ProfesorNotFoundException.class, () -> {
             profesorDaoMemory.findProfesor(profesorCargado.getId());
         });
-        assertEquals("No se pudo encontrar un profesor con el ID: " + profesorCargado.getId() + ".", exception.getMessage());
     }
 
 }

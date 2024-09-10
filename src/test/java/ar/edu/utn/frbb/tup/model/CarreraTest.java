@@ -22,10 +22,10 @@ public class CarreraTest {
         carrera = new Carrera("Programacion", 2);
         carrera.agregarMateria(materia);
         carrera.agregarMateria(materia2);
-        assertEquals(carrera.getNombre(), "Programacion");
-        assertEquals(carrera.getCantidadAnios(), 2);
-        assertEquals(carrera.getMateriasList().get(0), materia);
-        assertEquals(carrera.getMateriasList().get(1), materia2);
+        assertEquals("Programacion", carrera.getNombre());
+        assertEquals(2, carrera.getCantidadAnios());
+        assertEquals(materia, carrera.getMateriasList().get(0));
+        assertEquals(materia2, carrera.getMateriasList().get(1));
     }
 
 }

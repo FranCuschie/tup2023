@@ -29,7 +29,7 @@ public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
             return asignaturaExistente;
         }
         else {
-            throw new AsignaturaNotFoundException("No existe Asignatura con ese id.");
+            throw new AsignaturaNotFoundException("No existe Asignatura con ese ID: " + id + ".");
         }
     }
 

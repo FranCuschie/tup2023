@@ -29,20 +29,21 @@ public class ProfesorDaoMemoryImpl implements ProfesorDao {
             return profesorExistente;
         }
         else {
-            throw new ProfesorNotFoundException("No se pudo encontrar un profesor con ese id");
+            throw new ProfesorNotFoundException("No se pudo encontrar un profesor con ese ID: " + idProfesor + ".");
         }
     }
 
 
     @Override
-    public Profesor deleteProfesor(Long idProfesor) throws ProfesorNotFoundException {
-        Profesor profesorExistente = repositorioProfesores.get(idProfesor);
+    public Map<Long, Profesor> deleteProfesor(Long idProfesor) throws ProfesorNotFoundException {
+        Profesor profesorExistente = findProfesor(idProfesor);
         if (profesorExistente != null) {
-            return profesorExistente;
+            repositorioProfesores.remove(idProfesor);
         }
         else {
-            throw new ProfesorNotFoundException("No se pudo encontrar un profesor con ese id");
+            throw new ProfesorNotFoundException("No se pudo encontrar un profesor con el ID: " + idProfesor + ".");
         }
+        return repositorioProfesores;
     }
 
     @Override

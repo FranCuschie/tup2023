@@ -1,5 +1,6 @@
 package ar.edu.utn.frbb.tup.model.dto;
 
+
 public class ProfesorDto {
 
     private String nombre;

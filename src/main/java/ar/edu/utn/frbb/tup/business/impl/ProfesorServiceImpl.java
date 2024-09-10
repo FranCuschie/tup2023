@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Component
@@ -33,7 +34,7 @@ public class ProfesorServiceImpl implements ProfesorService {
         profesor.setNombre(profesor.getNombre());
         profesor.setApellido(profesor.getApellido());
         profesor.setTitulo(profesor.getTitulo());
-        profesor.setDni(profesor.getId());
+        profesor.setDni(profesor.getDni());
         profesorDao.saveProfesor(profesor);
         return profesor;
     }
@@ -51,7 +52,7 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor eliminarProfesor(Long idProfesor) throws ProfesorNotFoundException {
+    public Map<Long, Profesor> eliminarProfesor(Long idProfesor) throws ProfesorNotFoundException {
         return profesorDao.deleteProfesor(idProfesor);
     }
 

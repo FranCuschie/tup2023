@@ -65,7 +65,7 @@ public class ProfesorControllerTest {
     }
 
     @Test
-    public void testBuscarProfesorById() throws Exception {
+    public void testBuscarProfesor() throws Exception {
         Profesor profesor = new Profesor();
         profesor.setId(1);
 
@@ -82,7 +82,7 @@ public class ProfesorControllerTest {
     }
 
     @Test
-    public void testBuscarMateriasDictadasById() throws Exception {
+    public void testBuscarMateriasDictadas() throws Exception {
         Profesor profesor = new Profesor();
         profesor.setId(1);
         List<Materia> materias = new ArrayList<>();

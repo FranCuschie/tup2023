@@ -13,6 +13,7 @@ public class MateriaTest {
     @BeforeAll
     public static void setUp(){
         profesor = new Profesor();
+        profesor.setDni(2222222L);
         profesor.setNombre("Luciano");
         profesor.setApellido("Salotto");
         profesor.setTitulo("Programador");
@@ -28,13 +29,13 @@ public class MateriaTest {
         materia.setProfesor(profesor);
         materia.setCorrelatividades(new ArrayList<>());
         profesor.getMateriasDictadas().add(materia);
-        assertEquals(materia.getMateriaId(), 2);
-        assertEquals(materia.getNombre(), "Laboratorio III");
-        assertEquals(materia.getAnio(), 2);
-        assertEquals(materia.getCuatrimestre(), 1);
-        assertEquals(materia.getProfesor(), profesor);
-        assertEquals(materia.getCorrelatividades(), new ArrayList<>());
-        assertEquals(materia.getProfesor().getMateriasDictadas().get(0), materia);
+        assertEquals(2, materia.getMateriaId());
+        assertEquals("Laboratorio III", materia.getNombre());
+        assertEquals(2, materia.getAnio());
+        assertEquals(1, materia.getCuatrimestre());
+        assertEquals(profesor, materia.getProfesor());
+        assertEquals(new ArrayList<>(), materia.getCorrelatividades());
+        assertEquals(materia, materia.getProfesor().getMateriasDictadas().get(0));
     }
 
 }
