@@ -6,22 +6,19 @@ import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
 import ar.edu.utn.frbb.tup.persistence.MateriaDao;
 import ar.edu.utn.frbb.tup.persistence.ProfesorDao;
-import ar.edu.utn.frbb.tup.persistence.impl.ProfesorDaoMemoryImpl;
 import ar.edu.utn.frbb.tup.persistence.exception.ProfesorNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 @Component
 public class ProfesorServiceImpl implements ProfesorService {
 
-    private static final ProfesorDao profesorDao = new ProfesorDaoMemoryImpl();
 
     @Autowired
-    private ProfesorDao dao;
+    private ProfesorDao profesorDao;
 
     @Autowired
     private MateriaDao materiaDao;
@@ -29,12 +26,10 @@ public class ProfesorServiceImpl implements ProfesorService {
     @Override
     public Profesor crearProfesor(ProfesorDto profe) {
         Profesor profesor = new Profesor();
-        Random random = new Random();
-        profesor.setId(random.nextLong());
-        profesor.setNombre(profesor.getNombre());
-        profesor.setApellido(profesor.getApellido());
-        profesor.setTitulo(profesor.getTitulo());
-        profesor.setDni(profesor.getDni());
+        profesor.setNombre(profe.getNombre());
+        profesor.setApellido(profe.getApellido());
+        profesor.setTitulo(profe.getTitulo());
+        profesor.setDni(profe.getDni());
         profesorDao.saveProfesor(profesor);
         return profesor;
     }

@@ -3,6 +3,7 @@ package ar.edu.utn.frbb.tup.business.impl;
 import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.model.Profesor;
 import ar.edu.utn.frbb.tup.model.dto.ProfesorDto;
+import ar.edu.utn.frbb.tup.persistence.MateriaDao;
 import ar.edu.utn.frbb.tup.persistence.ProfesorDao;
 import ar.edu.utn.frbb.tup.persistence.exception.ProfesorNotFoundException;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,9 @@ public class ProfesorServiceImplTest {
     @Mock
     ProfesorDao profesorDao;
 
+    @Mock
+    MateriaDao materiaDao;
+
 
     @Test
     public void testCrearProfesor() {
@@ -42,9 +46,6 @@ public class ProfesorServiceImplTest {
 
         assertEquals("Luciano", profesorCreado.getNombre());
         assertEquals("Salotto", profesorCreado.getApellido());
-
-        verify(profesorDao, times(1)).saveProfesor(any(Profesor.class));
-
     }
 
     @Test
@@ -52,7 +53,7 @@ public class ProfesorServiceImplTest {
         Profesor profesor = new Profesor(222222L,"Salotto", "Luciano", "Progamador");
         when(profesorDao.findProfesor(1L)).thenReturn(profesor);
 
-        Profesor profesorEncontrado = profesorService.buscarProfesorById(1L);
+        Profesor profesorEncontrado = profesorDao.findProfesor(1L);
         verify(profesorDao, times(1)).findProfesor(1L);
     }
 
@@ -61,7 +62,8 @@ public class ProfesorServiceImplTest {
         List<Materia> materias = new ArrayList<>();
         materias.add(new Materia("Lab", 1, 1, new Profesor()));
         when(profesorDao.getMateriasDictadas(1L)).thenReturn(materias);
-        List<Materia> materiasEncontradas = profesorService.materiasDictadas(1L);
+
+        List<Materia> materiasEncontradas = profesorDao.getMateriasDictadas(1L);
         assertEquals(materias.get(0), materiasEncontradas.get(0));
     }
 

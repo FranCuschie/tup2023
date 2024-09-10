@@ -23,12 +23,17 @@ public class ProfesorController {
         return profesorService.crearProfesor(profesorDto);
     }
 
+    @GetMapping("{idProfesor}")
+    public Profesor buscarProfesor(@PathVariable ("idProfesor") Long id) throws ProfesorNotFoundException {
+        return profesorService.buscarProfesorById(id);
+    }
+
     @PutMapping("/{idProfesor}")
     public Profesor modificarProfesor(@PathVariable("idProfesor") Long id) throws ProfesorNotFoundException {
         return profesorService.modificarProfesor(id);
     }
 
-    @DeleteMapping("/carrera/{idProfesor}")
+    @DeleteMapping("/{idProfesor}")
     public Map<Long, Profesor> eliminarProfesor(@PathVariable("idProfesor") Long id) throws ProfesorNotFoundException {
         return profesorService.eliminarProfesor(id);
     }

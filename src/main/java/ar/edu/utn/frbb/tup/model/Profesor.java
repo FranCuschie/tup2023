@@ -1,9 +1,13 @@
 package ar.edu.utn.frbb.tup.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-
+// Para no tener problemas con el formato Json
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Profesor {
 
     private long id;
@@ -11,10 +15,9 @@ public class Profesor {
     private String apellido;
     private String titulo;
     private long dni;
-    private List<Materia> materiasDictadas; // Lista de materias
+    private List<Materia> materiasDictadas = new ArrayList<>(); // Lista de materias
 
     public Profesor() {
-        materiasDictadas = new ArrayList<>();
     }
 
     public Profesor(long dni, String nombre, String apellido, String titulo) {
@@ -71,5 +74,25 @@ public class Profesor {
 
     public void setMateriasDictadas(Materia materia) {
         this.materiasDictadas.add(materia);
+    }
+
+
+    // Para que los assertsequals y comparacion de objetos funcione.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Profesor profesor = (Profesor) o;
+        return Objects.equals(id, profesor.id) &&
+                Objects.equals(nombre, profesor.nombre) &&
+                Objects.equals(apellido, profesor.apellido) &&
+                Objects.equals(titulo, profesor.titulo) &&
+                Objects.equals(dni, profesor.dni) &&
+                Objects.equals(materiasDictadas, profesor.materiasDictadas);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre, apellido, titulo, dni, materiasDictadas);
     }
 }

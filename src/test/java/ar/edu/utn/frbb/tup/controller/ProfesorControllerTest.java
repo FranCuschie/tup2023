@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,10 +47,12 @@ public class ProfesorControllerTest {
                 .build();
     }
 
+    // No entiendo el porque, pero el Test de forma individual funciona, cuando lo corro en forma general tira ERROR
     @Test
     public void testCrearProfesor() throws Exception {
         Mockito.when(profesorService.crearProfesor(any(ProfesorDto.class))).thenReturn(new Profesor());
         ProfesorDto profesorDto = new ProfesorDto();
+        profesorDto.setDni(2222222L);
         profesorDto.setNombre("Luciano");
         profesorDto.setApellido("Salotto");
         profesorDto.setTitulo("Programador");
@@ -67,7 +70,10 @@ public class ProfesorControllerTest {
     @Test
     public void testBuscarProfesor() throws Exception {
         Profesor profesor = new Profesor();
-        profesor.setId(1);
+        profesor.setNombre("Luciano");
+        profesor.setApellido("Salotto");
+        profesor.setTitulo("Programador");
+        profesor.setId(1L);
 
         Mockito.when(profesorService.buscarProfesorById(any(Long.class))).thenReturn(profesor);
 
@@ -102,12 +108,12 @@ public class ProfesorControllerTest {
 
     @Test
     public void testEliminarProfesorById() throws Exception {
-        Mockito.when(profesorService.eliminarProfesor(any(Long.class)));
+        Mockito.when(profesorService.eliminarProfesor(any(Long.class))).thenReturn(new HashMap<>());
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.delete("/profesor/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent())
+                .andExpect(status().isOk())
                 .andReturn();
     }
 
