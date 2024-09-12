@@ -4,9 +4,10 @@ import ar.edu.utn.frbb.tup.model.Asignatura;
 import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.persistence.AsignaturaDao;
 import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
-
+@Service
 public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
 
     private static final Map<Long, Asignatura> repositorioAsignaturas = new HashMap<>();
