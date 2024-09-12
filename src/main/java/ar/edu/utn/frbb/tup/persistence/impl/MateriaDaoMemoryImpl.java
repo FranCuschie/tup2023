@@ -30,10 +30,6 @@ public class MateriaDaoMemoryImpl implements MateriaDao {
         throw new MateriaNotFoundException("No se encontró la materia con id " + idMateria);
     }
 
-    @Override
-    public void deleteMateria(int materiaId) {
-        repositorioMateria.remove(materiaId);
-    }
 
     @Override
     public List<Materia> getAllMaterias() {

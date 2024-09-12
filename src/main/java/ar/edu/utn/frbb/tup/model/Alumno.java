@@ -6,6 +6,8 @@ import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 
 public class Alumno {
 
@@ -15,7 +17,6 @@ public class Alumno {
     private long dni;
 
     private List<Asignatura> asignaturas;
-    private Asignatura materia;
 
     public Alumno() {
     }
@@ -68,13 +69,6 @@ public class Alumno {
         this.asignaturas = asignaturas;
     }
 
-    public Asignatura getMateria() {
-        return materia;
-    }
-
-    public void setMateria(Asignatura materia) {
-        this.materia = materia;
-    }
 
     public void aprobarAsignatura(Asignatura asignatura, int nota) throws EstadoIncorrectoException, CorrelatividadException{
         for (Materia correlativa :
@@ -113,19 +107,16 @@ public class Alumno {
         throw new AsignaturaNotFoundException("No se encontró la materia");
     }
 
-    public boolean puedeAprobar(Asignatura asignatura) {
-        return true;
-    }
-
     public void actualizarAsignatura(Asignatura asignatura) {
         for (Asignatura a:
                 asignaturas) {
             if (a.getNombreAsignatura().equals(asignatura.getNombreAsignatura())) {
+                if (asignatura.getNota().isPresent() || asignatura.getEstado().equals(EstadoAsignatura.APROBADA)){
+                    a.setNota(asignatura.getNota().get());
+                }
                 a.setEstado(asignatura.getEstado());
-                a.setNota(asignatura.getNota().get());
             }
         }
-
     }
 
     public long getId() {
@@ -136,7 +127,18 @@ public class Alumno {
         this.id = id;
     }
 
-    public List<Materia> getCorrelatividades(){
-        return this.materia.getCorrelatividades();
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Alumno alumno = (Alumno) o;
+        return id == alumno.id && dni == alumno.dni && nombre == alumno.nombre && apellido == alumno.apellido && asignaturas == alumno.asignaturas;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, dni, nombre, apellido, asignaturas);
     }
 }

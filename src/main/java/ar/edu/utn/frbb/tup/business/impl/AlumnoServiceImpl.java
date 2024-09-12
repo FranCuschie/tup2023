@@ -11,19 +11,21 @@ import ar.edu.utn.frbb.tup.model.exception.CorrelatividadException;
 import ar.edu.utn.frbb.tup.model.exception.EstadoIncorrectoException;
 import ar.edu.utn.frbb.tup.persistence.AlumnoDao;
 import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
-import ar.edu.utn.frbb.tup.persistence.impl.AlumnoDaoMemoryImpl;
 import ar.edu.utn.frbb.tup.persistence.exception.AlumnoNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 @Component
 public class AlumnoServiceImpl implements AlumnoService {
 
-    private static final AlumnoDao alumnoDao = new AlumnoDaoMemoryImpl();
-    private static final AsignaturaService asignaturaService = new AsignaturaServiceImpl();
+    @Autowired
+    private AlumnoDao alumnoDao;
 
+    @Autowired
+    private AsignaturaService asignaturaService;
 
     @Override
     public Asignatura actualizarEstadoAsignatura(Long idAlumno, Long idAsignatura, AsignaturaDto asignaturaDto) throws EstadoIncorrectoException, AsignaturaNotFoundException, CorrelatividadException, AlumnoNotFoundException {
@@ -50,8 +52,8 @@ public class AlumnoServiceImpl implements AlumnoService {
         a.setNombre(alumno.getNombre());
         a.setApellido(alumno.getApellido());
         a.setDni(alumno.getDni());
-        Random random = new Random();
-        a.setId(random.nextLong());
+        List<Asignatura> asignaturas = asignaturaService.obtenerAsignaturas();
+        a.setAsignaturas(asignaturas);
         alumnoDao.saveAlumno(a);
         return a;
     }

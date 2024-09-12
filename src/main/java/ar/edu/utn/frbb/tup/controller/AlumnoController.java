@@ -20,14 +20,14 @@ public class AlumnoController {
     @Autowired
     private AlumnoService alumnoService;
 
-    @PostMapping("/")
+    @PostMapping
     public Alumno crearAlumno(@RequestBody AlumnoDto alumnoDto) {
         return alumnoService.crearAlumno(alumnoDto);
     }
 
-    @PutMapping("/{idAlumno}")
-    public Alumno modificarAlumno(@PathVariable("idAlumno") Long idAlumno) throws AlumnoNotFoundException {
-        return alumnoService.buscarAlumno(idAlumno);
+    @GetMapping("/{idAlumno}")
+    public Alumno buscarAlumno(@PathVariable("idAlumno") Long id) throws AlumnoNotFoundException {
+        return alumnoService.buscarAlumno(id);
     }
 
     @DeleteMapping("/{idAlumno}")

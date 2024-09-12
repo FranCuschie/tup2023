@@ -5,10 +5,7 @@ import ar.edu.utn.frbb.tup.model.Materia;
 import ar.edu.utn.frbb.tup.persistence.AsignaturaDao;
 import ar.edu.utn.frbb.tup.persistence.exception.AsignaturaNotFoundException;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
 
@@ -19,7 +16,16 @@ public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
         // Genero un random en formato Long
         Random random = new Random();
         Asignatura asignatura = new Asignatura(materia, random.nextLong(999));
-        return repositorioAsignaturas.put(asignatura.getId(), asignatura);
+        repositorioAsignaturas.put(asignatura.getId(), asignatura);
+        return asignatura;
+
+    }
+
+    @Override
+    public void saveAsignaturas(List<Materia> listaMaterias) {
+        for (Materia materia : listaMaterias){
+            saveAsignatura(materia);
+        }
     }
 
     @Override
@@ -41,6 +47,10 @@ public class AsignaturaDaoMemoryImpl implements AsignaturaDao {
 
     @Override
     public List<Asignatura> getListAsignaturas() {
-        return null;
+        final List<Asignatura> listaAsignaturas = new ArrayList<>();
+        for (Asignatura asignatura : repositorioAsignaturas.values()){
+            listaAsignaturas.add(asignatura);
+        }
+        return listaAsignaturas;
     }
 }

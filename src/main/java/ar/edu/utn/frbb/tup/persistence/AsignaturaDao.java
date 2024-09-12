@@ -9,6 +9,8 @@ import java.util.List;
 public interface AsignaturaDao {
     Asignatura saveAsignatura(Materia materia);
 
+    void saveAsignaturas(List<Materia> listaMaterias);
+
     Asignatura getAsignaturaById(long id) throws AsignaturaNotFoundException;
 
     void actualizarAsignatura(Asignatura asignatura) throws AsignaturaNotFoundException;
